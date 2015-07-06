@@ -9,9 +9,15 @@ Vendors will be able to easily input their weekends stock, price and availabilit
 
 #User Stories#
 
-https://trello.com/b/Btyx6CxZ/market-list
+[Visit Trello!](https://trello.com/b/Btyx6CxZ/market-list).
 
 #Wireframes#
+
+[Visit GitHub!](https://github.com/zamariac/market_list/blob/master/Market%20List.pdf).
+
+
+
+
 
 
 
