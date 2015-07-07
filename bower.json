@@ -1,0 +1,19 @@
+{
+  "name": "marketlist",
+  "version": "0.0.0",
+  "homepage": "https://github.com/zamariac/market_list",
+  "authors": [
+    "Maria Zamora <Zamora.Mariac@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5"
+  }
+}

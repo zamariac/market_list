@@ -17,24 +17,21 @@ Vendors will be able to easily input their weekends stock, price and availabilit
 
 
 
-
-
-
-
 #Models#
 
-##userModel (vendor)##
-name, email, password, photo, address, business type, market list? ,
+userModel (vendor):
+name, email, password, photo, address, business type, market list; all null.
 
-##userCollection##
+userCollection
 
-##homePageComponent##
-##signUpComponent##
-##vendorPrivateProfileComponent##
-##findMarketComponent##
-##foundMarketComponent##
-##vendorPageComponent##
-##marketListEditComponent##
+homePageComponent
+signUpComponent
+logInPageComponent
+vendorPrivateProfileComponent
+findMarketComponent
+foundMarketComponent
+vendorPageComponent
+marketListEditComponent
 
 
 #APIs, Plugins, Libraries and Frameworks#
