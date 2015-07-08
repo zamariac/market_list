@@ -6,7 +6,7 @@ var Backbone = require('backparse')({
 });
 
 Backbone.$ = require('jquery');
-var validtor = require('validator')
+var validator = require('validator')
 
 module.exports = Backbone.Model.extend({
 	defaults: {
@@ -19,10 +19,10 @@ module.exports = Backbone.Model.extend({
 	}
 
 	parseClassName: '_User',
-	idAttrivute: 'objectId',
+	idAttribute: 'objectId',
 	isUser: true,
-		save: function(key, val, options){
+	save: function(key, val, options){
 		this.unset('confirmPassword');
 		return Backbone.Model.prototype.save.call(this, key, val, options);
-		}
+	}
 });
