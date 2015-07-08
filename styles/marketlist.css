@@ -1,0 +1,78 @@
+
+
+.headerwrap{
+	height: 75px;
+	border-bottom: 5px solid red;
+}
+
+a:link {
+	float:right;
+	color:red;
+	font-family: arial;
+	font-size: 15px;
+
+	margin-top: 25px;
+	margin-right: 25px;
+
+}
+
+.homehead{
+	color: red;
+	font-family: arial;
+	font-size: 35px;
+	position: relative;
+	margin-left: 30px;
+	top:37px;
+	width: 184px;
+	padding: 0 6px;
+	background-color: white;
+	overflow: hidden;
+}
+
+.item{
+ 	 width: auto;
+  	 height: 500px;
+     max-height: 500px;
+}
+
+.intro{
+
+	font-family: helvetica;
+	font-size: 100px;
+	color: white; 
+	text-shadow: 3px 0 gray;
+	text-align: left; 
+	line-height: 100px;
+	margin-bottom: 30px;
+	      
+}
+
+.bottomline{
+	height:5px;
+	background-color:red;
+
+}
+
+.findMarketButton{
+	height:30px;
+	width:300px;
+	background-color: red;
+	margin-left: 200px;
+	margin-top: 30px;
+
+	font-family: arial;
+	color: white;
+
+
+}
+
+.signUpButton{
+	height:30px;
+	width:300px;
+	background-color: red;
+	margin-left: 75px;
+	
+	font-family: arial;
+	color: white;
+
+}
