@@ -6,7 +6,7 @@ var Backbone = require('backparse')({
 });
 
 Backbone.$ = require('jquery');
-var validator = require('validator')
+var validator = require('validator');
 
 module.exports = Backbone.Model.extend({
 	defaults: {
@@ -16,7 +16,7 @@ module.exports = Backbone.Model.extend({
 		address: null,
 		businessType: null,
 		imageId: null,
-	}
+	},
 
 	parseClassName: '_User',
 	idAttribute: 'objectId',

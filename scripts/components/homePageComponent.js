@@ -52,15 +52,13 @@ module.exports = React.createClass({
 			</div>
 		<div className="bottomline"> </div>
 		<button className="findMarketButton"> Find a market </button>
-		<button className="signUpButton"> Free vendor sign up </button>
+		<a href='#signup' className="signUpButton"> Free vendor sign up </a>
 	</div>
 		);
 	}
 
+	
+
 
 });
 
-
-// componentDidMount: function(){
-		 $('.carousel').carousel()
-	// }
