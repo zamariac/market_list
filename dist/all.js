@@ -35635,7 +35635,7 @@ module.exports = React.createClass({
 				null,
 				React.createElement(
 					'a',
-					{ href: 'LogIn', className: 'logInButton' },
+					{ href: '#login', className: 'logInButton' },
 					' Log in '
 				),
 				React.createElement(
@@ -35733,14 +35733,14 @@ module.exports = React.createClass({
 				' '
 			),
 			React.createElement(
-				'button',
-				{ className: 'findMarketButton' },
+				'a',
+				{ href: '#findMarket', className: 'findMarketButton' },
 				' Find a market '
 			),
 			React.createElement(
 				'a',
 				{ href: '#signup', className: 'signUpButton' },
-				' Free vendor sign up '
+				' Vendor sign up '
 			)
 		);
 	}
@@ -35748,6 +35748,114 @@ module.exports = React.createClass({
 });
 
 },{"bootstrap/js/carousel.js":7,"jQuery":9,"react":165}],168:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var _ = require('backbone/node_modules/underscore');
+var Backbone = require('backparse');
+
+var userModel = require('../models/userModel');
+
+module.exports = React.createClass({
+	displayName: 'exports',
+
+	render: function render() {
+		return React.createElement(
+			'div',
+			{ className: 'signupForm', ref: 'loginPage', onSubmit: this.login },
+			React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'a',
+					{ href: '#home', className: 'homeButton' },
+					' Home '
+				),
+				React.createElement(
+					'div',
+					{ className: 'headerwrap' },
+					React.createElement(
+						'div',
+						{ className: 'homehead' },
+						' Market List '
+					)
+				)
+			),
+			React.createElement(
+				'form',
+				{ className: 'form-horizontal' },
+				React.createElement(
+					'div',
+					{ className: 'form-group' },
+					React.createElement(
+						'label',
+						{ 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
+						'Email'
+					),
+					React.createElement(
+						'div',
+						{ className: 'col-sm-10' },
+						React.createElement('input', { type: 'email', className: 'form-control inputEmail3', ref: 'loginEmail', placeholder: 'Email' })
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'form-group' },
+					React.createElement(
+						'label',
+						{ 'for': 'inputPassword3', className: 'col-sm-2 control-label' },
+						'Password'
+					),
+					React.createElement(
+						'div',
+						{ className: 'col-sm-10' },
+						React.createElement('input', { type: 'password', className: 'form-control inputPassword3', ref: 'loginPassword', placeholder: 'Password' })
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'form-group' },
+					React.createElement(
+						'div',
+						{ className: 'col-sm-offset-2 col-sm-10' },
+						React.createElement(
+							'button',
+							{ type: 'submit', className: 'btn btn-default' },
+							'Sign in'
+						)
+					)
+				),
+				React.createElement('div', { className: 'error', ref: 'loginError' })
+			),
+			React.createElement('div', { className: 'bottomline' })
+		);
+	},
+
+	login: function login(e) {
+		e.preventDefault();
+		var self = this;
+		var currentUser = new UserModel({
+			vendorEmail: this.refs.loginEmail.getDOMNode().value,
+			vendorPassword: this.refs.loginPassword.getDOMNode().value
+		});
+
+		if (currentUser.isValid()) {
+			$.post('#login', currentUser.attributes).success(function (user) {
+				App.navigate('#vendorprofile', { trigger: true });
+				console.log('success');
+			}).error(function (error) {
+				console.log('get error');
+				self.refs.loginError.getDOMNode().innerHTML = error.responseJSON.error;
+			});
+		} else {
+			console.log('js error');
+			this.refs.loginError.getDOMNode().innerHTML = currentUser.validationError;
+		}
+	}
+
+});
+
+},{"../models/userModel":172,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],169:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -35768,6 +35876,11 @@ module.exports = React.createClass({
 		return React.createElement(
 			'form',
 			{ onSubmit: this.registerSubmit },
+			React.createElement(
+				'a',
+				{ href: '#home', className: 'homeButton' },
+				' Home '
+			),
 			React.createElement(
 				'div',
 				{ className: 'headerwrap' },
@@ -35801,17 +35914,6 @@ module.exports = React.createClass({
 							'button',
 							{ className: 'photoButton' },
 							' Upload Logo'
-						),
-						React.createElement('textarea', { ref: 'vendorDescription', className: 'vendorDescription', placeholder: 'Business description' }),
-						React.createElement(
-							'span',
-							{ className: 'errors' },
-							this.state.errors.vendorDescription
-						),
-						React.createElement(
-							'button',
-							{ className: 'createUser' },
-							'Submit'
 						)
 					),
 					React.createElement(
@@ -35835,11 +35937,11 @@ module.exports = React.createClass({
 							{ className: 'errors' },
 							this.state.errors.vendorPassword
 						),
-						React.createElement('input', { type: 'text', ref: 'vendorAddress', className: 'vendorAddress', placeholder: 'Address' }),
+						React.createElement('input', { type: 'text', ref: 'vendorPasswordConfirm', className: 'vendorPasswordConfirm', placeholder: 'Confirm Password' }),
 						React.createElement(
 							'span',
 							{ className: 'errors' },
-							this.state.errors.vendorAddress
+							this.state.errors.vendorPasswordConfirm
 						)
 					),
 					React.createElement(
@@ -35890,11 +35992,26 @@ module.exports = React.createClass({
 							{ className: 'errors' },
 							this.state.errors.vendorEmail
 						),
-						React.createElement('input', { type: 'text', ref: 'vendorPasswordConfirm', className: 'vendorPasswordConfirm', placeholder: 'Confirm Password' }),
+						React.createElement('input', { type: 'text', ref: 'vendorAddress', className: 'vendorAddress', placeholder: 'Address' }),
 						React.createElement(
 							'span',
 							{ className: 'errors' },
-							this.state.errors.vendorPasswordConfirm
+							this.state.errors.vendorAddress
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'row' },
+						React.createElement('textarea', { ref: 'vendorDescription', className: 'vendorDescription', placeholder: 'Business description' }),
+						React.createElement(
+							'span',
+							{ className: 'errors' },
+							this.state.errors.vendorDescription
+						),
+						React.createElement(
+							'button',
+							{ className: 'createUser' },
+							'Submit'
 						)
 					)
 				)
@@ -35912,12 +36029,13 @@ module.exports = React.createClass({
 
 		var err = {};
 		var user = new userModel({
-			name: this.refs.vendorName.getDOMNode().value,
-			email: this.refs.vendorEmail.getDOMNode().value,
-			password: this.refs.vendorPassword.getDOMNode().value,
-			contact: this.refs.vendorContact.getDOMNode().value,
-			address: this.refs.vendorAddress.getDOMNode().value,
-			description: this.refs.vendorName.getDOMNode().value
+			vendorName: this.refs.vendorName.getDOMNode().value,
+			vendorEmail: this.refs.vendorEmail.getDOMNode().value,
+			vendorPassword: this.refs.vendorPassword.getDOMNode().value,
+			vendorPasswordConfirm: this.refs.vendorPasswordConfirm.getDOMNode().value,
+			vendorContact: this.refs.vendorContact.getDOMNode().value,
+			vendorAddress: this.refs.vendorAddress.getDOMNode().value,
+			vendorDescription: this.refs.vendorDescription.getDOMNode().value
 
 		});
 
@@ -35955,7 +36073,7 @@ module.exports = React.createClass({
 
 });
 
-},{"../models/userModel":171,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],169:[function(require,module,exports){
+},{"../models/userModel":172,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],170:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -35977,7 +36095,7 @@ module.exports = React.createClass({
 
 });
 
-},{"../models/userModel":171,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],170:[function(require,module,exports){
+},{"../models/userModel":172,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],171:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -35986,6 +36104,7 @@ var Backbone = require('backbone');
 var Home = require('./components/homePageComponent');
 var SignUp = require('./components/signUpComponent');
 var VendorProfile = require('./components/vendorProfileComponent');
+var LogIn = require('./components/logInComponent');
 
 var userModel = require('./models/userModel');
 
@@ -35996,7 +36115,8 @@ var App = Backbone.Router.extend({
 		'': 'home',
 		'home': 'home',
 		'signup': 'signup',
-		'vendorProfile': 'vendorProfile'
+		'vendorprofile': 'vendorprofile',
+		'login': 'login'
 	},
 
 	home: function home() {
@@ -36007,9 +36127,12 @@ var App = Backbone.Router.extend({
 		React.render(React.createElement(SignUp, null), document.querySelector('#container'));
 	},
 
-	vendorProfile: function vendorProfile() {
-		console.log('vendorProfile');
+	vendorprofile: function vendorprofile() {
 		React.render(React.createElement(VendorProfile, null), document.querySelector('#container'));
+	},
+
+	login: function login() {
+		React.render(React.createElement(LogIn, null), document.querySelector('#container'));
 	}
 
 });
@@ -36018,7 +36141,7 @@ var app = new App();
 Backbone.history.start();
 // app.navigate('home')
 
-},{"./components/homePageComponent":167,"./components/signUpComponent":168,"./components/vendorProfileComponent":169,"./models/userModel":171,"backbone":1,"react":165}],171:[function(require,module,exports){
+},{"./components/homePageComponent":167,"./components/logInComponent":168,"./components/signUpComponent":169,"./components/vendorProfileComponent":170,"./models/userModel":172,"backbone":1,"react":165}],172:[function(require,module,exports){
 'use strict';
 
 var Backbone = require('backparse')({
@@ -36033,10 +36156,12 @@ var validator = require('validator');
 
 module.exports = Backbone.Model.extend({
 	defaults: {
-		email: null,
-		password: null,
-		businessName: null,
-		address: null,
+		vendorEmail: null,
+		vendorPassword: null,
+		vendorPasswordConfirm: null,
+		vendorName: null,
+		vendorContact: null,
+		vendorAddress: null,
 		businessType: null,
 		imageId: null
 	},
@@ -36050,7 +36175,7 @@ module.exports = Backbone.Model.extend({
 	}
 });
 
-},{"backparse":3,"jquery":10,"validator":166}]},{},[170])
+},{"backparse":3,"jquery":10,"validator":166}]},{},[171])
 
 
 //# sourceMappingURL=all.js.map

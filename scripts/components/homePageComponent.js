@@ -8,7 +8,7 @@ module.exports = React.createClass({
 		return (
 		<div>
 			<div>
-				<a href="LogIn" className="logInButton"> Log in </a>
+				<a href="#login" className="logInButton"> Log in </a>
 				<div className="headerwrap"> 
 				<div className="homehead"> Market List </div> 
 				
@@ -51,8 +51,8 @@ module.exports = React.createClass({
 				</div>
 			</div>
 		<div className="bottomline"> </div>
-		<button className="findMarketButton"> Find a market </button>
-		<a href='#signup' className="signUpButton"> Free vendor sign up </a>
+		<a href="#findMarket" className="findMarketButton"> Find a market </a>
+		<a href="#signup" className="signUpButton"> Vendor sign up </a>
 	</div>
 		);
 	}

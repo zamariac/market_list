@@ -4,6 +4,7 @@ var Backbone = require('backbone');
 var Home = require('./components/homePageComponent');
 var SignUp = require('./components/signUpComponent');
 var VendorProfile = require('./components/vendorProfileComponent');
+var LogIn= require('./components/logInComponent');
 
 var userModel = require('./models/userModel');
 
@@ -15,7 +16,8 @@ var App = Backbone.Router.extend({
 		'': 'home',
 		'home':'home',
 		'signup':'signup',
-		'vendorProfile':'vendorProfile'
+		'vendorprofile':'vendorprofile',
+		'login':'login'
 	},
 
 
@@ -27,10 +29,13 @@ var App = Backbone.Router.extend({
 		React.render(<SignUp/>,document.querySelector('#container'));
 	},
 
-	vendorProfile: function(){
-		console.log('vendorProfile')
+	vendorprofile: function(){
 		React.render(<VendorProfile/>,document.querySelector('#container'));
 
+	},
+
+	login: function(){
+		React.render(<LogIn/>,document.querySelector('#container'));
 	},
 
 

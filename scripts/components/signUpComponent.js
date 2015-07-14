@@ -14,6 +14,7 @@ module.exports = React.createClass({
 	render: function(){
 		return(
 			<form onSubmit={this.registerSubmit}>
+				<a href="#home" className="homeButton"> Home </a>
 				<div className="headerwrap"> 
 					<div className="marginTop"></div>
 					<div className="homehead"> Market List </div> 
@@ -24,9 +25,6 @@ module.exports = React.createClass({
 								<div ref="vendorPhoto"className="vendorPhoto">photo here</div>
 								<span className="errors">{this.state.errors.vendorPhoto}</span>
 								<button className="photoButton"> Upload Logo</button>
-								<textarea ref="vendorDescription" className="vendorDescription" placeholder="Business description"></textarea>
-										<span className="errors">{this.state.errors.vendorDescription}</span>
-											<button className="createUser">Submit</button>
   							</div>
   							<div className="col-sm-4">
   								<input type="text" ref="vendorName" className="vendorName" placeholder="Vendor Name"/>
@@ -35,8 +33,8 @@ module.exports = React.createClass({
 										<span className="errors">{this.state.errors.vendorContact}</span>
   								<input type="text" ref="vendorPassword" className="vendorPassword" placeholder="Enter a Password"/>
 										<span className="errors">{this.state.errors.vendorPassword}</span>
-  								<input type="text" ref="vendorAddress" className="vendorAddress"placeholder="Address"/>
-										<span className="errors">{this.state.errors.vendorAddress}</span>
+								<input type="text" ref="vendorPasswordConfirm" className="vendorPasswordConfirm" placeholder="Confirm Password"/>
+										<span className="errors">{this.state.errors.vendorPasswordConfirm}</span>
   							</div>
   							<div className="col-sm-4">
   									<div ref="scroll" className="scroll"> Business
@@ -51,10 +49,15 @@ module.exports = React.createClass({
 									</div>
 								<input type="text" ref="vendorEmail" className="vendorEmail" placeholder="Email"/>
 										<span className="errors">{this.state.errors.vendorEmail}</span>
-								<input type="text" ref="vendorPasswordConfirm" className="vendorPasswordConfirm" placeholder="Confirm Password"/>
-										<span className="errors">{this.state.errors.vendorPasswordConfirm}</span>
+								<input type="text" ref="vendorAddress" className="vendorAddress"placeholder="Address"/>
+										<span className="errors">{this.state.errors.vendorAddress}</span>
 
   							</div>
+  							<div className="row">
+  							<textarea ref="vendorDescription" className="vendorDescription" placeholder="Business description"></textarea>
+										<span className="errors">{this.state.errors.vendorDescription}</span>
+											<button className="createUser">Submit</button>
+							</div>
   					</div>
 
 				</div>
@@ -68,12 +71,14 @@ module.exports = React.createClass({
 
 		var err = {};
 		var user = new userModel({
-			name: this.refs.vendorName.getDOMNode().value,
-			email: this.refs.vendorEmail.getDOMNode().value,
-			password: this.refs.vendorPassword.getDOMNode().value,
-			contact: this.refs.vendorContact.getDOMNode().value, 
-			address: this.refs.vendorAddress.getDOMNode().value,
-			description: this.refs.vendorName.getDOMNode().value,
+			vendorName: this.refs.vendorName.getDOMNode().value,
+			vendorEmail: this.refs.vendorEmail.getDOMNode().value,
+			vendorPassword: this.refs.vendorPassword.getDOMNode().value,
+			vendorPasswordConfirm: this.refs.vendorPasswordConfirm.getDOMNode().value,
+			vendorContact: this.refs.vendorContact.getDOMNode().value, 
+			vendorAddress: this.refs.vendorAddress.getDOMNode().value,
+			vendorDescription: this.refs.vendorDescription.getDOMNode().value,
+
 
 		});
 

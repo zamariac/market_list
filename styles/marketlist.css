@@ -5,7 +5,7 @@
 	border-bottom: 5px solid red;
 }
 
-a:link {
+.logInButton {
 	float:right;
 	color:red;
 	font-family: arial;
@@ -31,19 +31,18 @@ a:link {
 
 .item{
  	 width: auto;
-  	 height: 400px;
-     max-height: 400px;
+  	 height: 300px;
+     max-height: 300px;
 }
 
 .intro{
 
 	font-family: helvetica;
-	font-size: 100px;
+	font-size: 60px;
 	color: white; 
-	text-shadow: 3px 0 gray;
+	text-shadow: 4px 0 gray;
 	text-align: left; 
-	line-height: 100px;
-	margin-bottom: 30px;
+	line-height: 75px;
 	      
 }
 
@@ -54,28 +53,23 @@ a:link {
 }
 
 .findMarketButton{
-	height:30px;
-	width:300px;
-	background-color: red;
-	margin-left: 85px;
-	margin-top: 30px;
+	margin-left:25px;
+	font-family: arial;
+	font-size: 35px;
+	color: red;
+	
 	
 
-	font-family: arial;
-	color: white;
-	
 }
 
 .signUpButton{
-	height:30px;
-	width:300px;
-	background-color: red;
-	margin-left: 50px;
-	margin-top: 30px;
-
-	
+	margin-left:50px;
 	font-family: arial;
-	color: white;
+	font-size: 35px;
+	color: red;
+	
+	
+	
 
 }
 
@@ -83,32 +77,31 @@ a:link {
 	height: 170px;
 	width: 170px;
 	border: 1px solid black;
-	margin-left: 20px;
+	margin-left: 10px;
 	margin-top: 20px;
 }
 
 .photoButton{
-	margin-top: 5px;
-	margin-left: 50px;
+	margin-top: 8px;
+	margin-left: 30px;
 	height: 20px;
 }
 
 .vendorDescription{
-	display: block;
-	width: 700px;
+	width: 90%;
 	height: 125px;
-	margin-left: 20px;
 	margin-top: 30px;
 	margin-bottom: 20px;
+	margin-left: 20px;
 }
 
 .createUser{
-	margin-left: 650px;
+	margin-left: 20px;
 	margin-bottom: 10px;
 }
 
 .vendorName{
-	width: 250px;
+	width: 90%;
 	margin-top: 20px;
 }
 
@@ -117,29 +110,29 @@ a:link {
 	margin-top: 25px;
 }
 .vendorContact{
-	width: 250px;
+	width: 90%;
 	margin-top: 20px;
 }
 
 .vendorEmail{
-	width: 200px;
+	width: 90%;
 	margin-top: 20px;
-	margin-left: 30px;
+	
 }
 
 .vendorPassword{
-	width: 250px;
+	width: 90%;
 	margin-top: 20px;
 }
 
 .vendorPasswordConfirm{
-	width: 200px;
+	width: 90%;
 	margin-top: 20px;
-	margin-left: 30px;
+	
 }
 
 .vendorAddress{
-	width: 480px;
+	width: 90%;
 	margin-top: 20px;
 }
 
@@ -149,24 +142,87 @@ a:link {
 	float: right;
 }
 
-/**/
+.homeButton {
+	float:right;
+	color:red;
+	font-family: arial;
+	font-size: 15px;
 
-
-@media (max-width: 726px) {
-  .findMarketButton{
-  	margin-left: 200px;
-  	
-
-
-  }
-  .signUpButton{
-  	margin-left: 200px;
-  	
-  	
-  }
+	margin-top: 25px;
+	margin-right: 25px;
 
 }
 
+
+.logOutButton {
+	float:right;
+	color:red;
+	font-family: arial;
+	font-size: 15px;
+
+	margin-top: 25px;
+	margin-right: 25px;
+
+}
+
+
+
+
+@media (min-width: 750px) {
+	.headerwrap{
+	height: 100px;
+	border-bottom: 6px solid red;
+}
+	.item{
+ 	 width: auto;
+  	 height: 1000px;
+     max-height: 500px;
+}
+.homehead{
+	color: red;
+	font-family: arial;
+	font-size: 44px;
+	position: relative;
+	margin-left: 30px;
+	top:48px;
+	width: 228px;
+	padding: 0 6px;
+	background-color: white;
+	overflow: hidden;
+}
+	.intro{
+	font-family: helvetica;
+	font-size: 100px;
+	color: white; 
+	text-shadow: 4px 0 gray;
+	text-align: left; 
+	line-height: 125px;      
+}
+
+
+}
+
+
+@media (min-width: 970px) {
+	.intro{
+	font-family: helvetica;
+	font-size: 120px;
+	color: white; 
+	text-shadow: 4px 0 gray;
+	text-align: left; 
+	line-height: 120px;
+	      
+}
+	.findMarketButton{
+	margin-left: 370px;
+  
+  }
+  .signUpButton{
+  	margin-left: 100px;
+
+  }
+
+}
 
 
 
