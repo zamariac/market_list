@@ -10,11 +10,13 @@ module.exports = React.createClass({
 		return (
 			<div className="signupForm" ref="loginPage" onSubmit = {this.login}>
 				<div>
-					<a href="#home" className="homeButton"> Home </a>
 						<div className="headerwrap"> 
+							<a href="#home" className="homeButton"> Home </a>
 							<div className="homehead"> Market List </div> 
+
 						</div>
 				</div>
+				<div className="loginBlock">
 				<form className="form-horizontal">
 		  				<div className="form-group">
 		    				<label for="inputEmail3" className="col-sm-2 control-label">Email</label>
@@ -36,6 +38,7 @@ module.exports = React.createClass({
 					  </div>
 					  <div className="error" ref="loginError"></div>
 				</form>
+				</div>
 				<div className="bottomline"></div>
 			</div>
 

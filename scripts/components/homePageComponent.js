@@ -9,8 +9,8 @@ module.exports = React.createClass({
 		<div>
 			<div>
 				<a href="#login" className="logInButton"> Log in </a>
-				<div className="headerwrap"> 
-				<div className="homehead"> Market List </div> 
+				<div className="headerwraphome"> 
+				<div className="homeheadhome"> Market List </div> 
 				
 				</div>
 
@@ -50,8 +50,8 @@ module.exports = React.createClass({
 		  			</a>
 				</div>
 			</div>
-		<div className="bottomline"> </div>
-		<a href="#findMarket" className="findMarketButton"> Find a market </a>
+		<div className="bottomlinehome"> </div>
+		<a href="#findmarket" className="findMarketButton"> Find a market </a>
 		<a href="#signup" className="signUpButton"> Vendor sign up </a>
 	</div>
 		);

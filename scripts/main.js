@@ -3,8 +3,11 @@ var Backbone = require('backbone');
 
 var Home = require('./components/homePageComponent');
 var SignUp = require('./components/signUpComponent');
+		filepicker.setKey("A6o1LvSOGRPGGwCAWAvQLz");
+		
 var VendorProfile = require('./components/vendorProfileComponent');
 var LogIn= require('./components/logInComponent');
+var FindMarket= require('./components/findMarketComponent');
 
 var userModel = require('./models/userModel');
 
@@ -17,7 +20,8 @@ var App = Backbone.Router.extend({
 		'home':'home',
 		'signup':'signup',
 		'vendorprofile':'vendorprofile',
-		'login':'login'
+		'login':'login',
+		'findmarket':'findmarket',
 	},
 
 
@@ -26,11 +30,12 @@ var App = Backbone.Router.extend({
 	},
 
 	signup: function(){
-		React.render(<SignUp/>,document.querySelector('#container'));
+		React.render(<SignUp router={app} user={user}/>,document.querySelector('#container'));
 	},
 
 	vendorprofile: function(){
-		React.render(<VendorProfile/>,document.querySelector('#container'));
+		// React.render(<VendorProfile user={user}/>,document.querySelector('#container'));
+		React.render(<VendorProfile />,document.querySelector('#container'));
 
 	},
 
@@ -38,8 +43,9 @@ var App = Backbone.Router.extend({
 		React.render(<LogIn/>,document.querySelector('#container'));
 	},
 
-
-
+	findmarket: function(){
+		React.render(<FindMarket/>,document.querySelector('#container'));
+	},
 
 
 });

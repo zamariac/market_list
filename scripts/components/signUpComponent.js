@@ -14,17 +14,19 @@ module.exports = React.createClass({
 	render: function(){
 		return(
 			<form onSubmit={this.registerSubmit}>
-				<a href="#home" className="homeButton"> Home </a>
+
 				<div className="headerwrap"> 
+					<a href="#home" className="homeButton"> Home </a>
 					<div className="marginTop"></div>
 					<div className="homehead"> Market List </div> 
 				</div>
 				<div className="container">
 					<div className="row">
   							<div className="col-sm-4"> 
-								<div ref="vendorPhoto"className="vendorPhoto">photo here</div>
+								<div ref="vendorPhoto"className="vendorPhoto"><img src={this.state.picture}/></div>
 								<span className="errors">{this.state.errors.vendorPhoto}</span>
-								<button className="photoButton"> Upload Logo</button>
+
+								<button onClick={this.pickPhoto} className="photoButton" type="button"> Upload Logo</button>
   							</div>
   							<div className="col-sm-4">
   								<input type="text" ref="vendorName" className="vendorName" placeholder="Vendor Name"/>
@@ -49,11 +51,20 @@ module.exports = React.createClass({
 									</div>
 								<input type="text" ref="vendorEmail" className="vendorEmail" placeholder="Email"/>
 										<span className="errors">{this.state.errors.vendorEmail}</span>
-								<input type="text" ref="vendorAddress" className="vendorAddress"placeholder="Address"/>
-										<span className="errors">{this.state.errors.vendorAddress}</span>
-
+								<div className="scroll"> Market
+										<select ref="vendorLocation"> 
+										<option value="1">Location</option>
+					    				<option value="2">Hope FM</option>
+					    				<option value="3">Lakeline TFM</option>
+					    				<option value="4">Domain TFM</option>
+					    				<option value="5">Mueller TFM</option>
+					    				<option value="6">All of the above</option>
+										</select>
+									<span className="errors">{this.state.errors.scroll}</span>
+									</div>
   							</div>
   							<div className="row">
+  							<span className="errors">{this.state.errors.servererror}</span>
   							<textarea ref="vendorDescription" className="vendorDescription" placeholder="Business description"></textarea>
 										<span className="errors">{this.state.errors.vendorDescription}</span>
 											<button className="createUser">Submit</button>
@@ -66,33 +77,54 @@ module.exports = React.createClass({
 			);
 	},
 
+	pickPhoto: function(e){
+		var self = this;
+
+		console.log('hello')
+		filepicker.pickAndStore(
+			{
+				mimetype:"image/*"
+			},
+			{},
+			function(response){
+				console.log(response);
+				// self.setState({
+				// 	avatarUrl: InkBlobs[0].url
+				// });
+				self.setState({picture:response[0].url})
+			}
+		);
+
+	},
+
 	registerSubmit: function(e){
 		e.preventDefault();
 
+		var self = this;
 		var err = {};
 		var user = new userModel({
 			vendorName: this.refs.vendorName.getDOMNode().value,
-			vendorEmail: this.refs.vendorEmail.getDOMNode().value,
-			vendorPassword: this.refs.vendorPassword.getDOMNode().value,
+			username: this.refs.vendorEmail.getDOMNode().value,
+			password: this.refs.vendorPassword.getDOMNode().value,
 			vendorPasswordConfirm: this.refs.vendorPasswordConfirm.getDOMNode().value,
 			vendorContact: this.refs.vendorContact.getDOMNode().value, 
-			vendorAddress: this.refs.vendorAddress.getDOMNode().value,
+			vendorLocation: this.refs.vendorLocation.getDOMNode().value,
 			vendorDescription: this.refs.vendorDescription.getDOMNode().value,
 
 
 		});
 
 
-		if(!user.get('vendorName') || !user.get('vendorPassword') || !user.get('vendorEmail') || !user.get('vendorPasswordConfirm')
-			|| !user.get('vendorContact')|| !user.get('vendorAddress')|| !user.get('vendorDescription')){
+		if(!user.get('vendorName') || !user.get('password') || !user.get('username') || !user.get('vendorPasswordConfirm')
+			|| !user.get('vendorContact')|| !user.get('vendorLocation')|| !user.get('vendorDescription')){
 
 			if(!user.get('vendorName')){
 				err.vendorName = 'You must enter a vendor name';
 			}
-			if(!user.get('vendorEmail')){
+			if(!user.get('username')){
 				err.vendorEmail = 'You must enter a vendor Email';
 			}
-			if(!user.get('vendorPassword')){
+			if(!user.get('password')){
 				err.vendorPassword = 'You must enter a Password';
 			}
 			if(!user.get('vendorPasswordConfirm')){
@@ -104,17 +136,31 @@ module.exports = React.createClass({
 			if(!user.get('vendorDescription')){
 				err.vendorDescription = 'You must enter a vendor description';
 			}
-			if(!user.get('vendorAddress')){
-				err.vendorAddress = 'You must enter an address';
+			if(!user.get('vendorLocation')){
+				err.vendorLocation = 'You must choose your location';
 			}
 
+			this.setState({errors:err});
+
 		} else {
-			user.save();
-			app.navigate('vendorProfile', {trigger: true});
+			user.save(null, {
+				success:function(){
+					self.props.router.navigate('vendorprofile', {trigger: true});
+				},
+
+				error: function(userModel,response){
+					self.setState({
+						errors: {servererror:response.responseJSON.error
+						}
+					});
+				}
+
+			});
+			
 		}
 		console.log(err)
 
-		this.setState({errors:err});
+		
 	}
 
 

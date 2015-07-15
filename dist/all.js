@@ -35619,6 +35619,115 @@ module.exports = require('./lib/React');
 'use strict';
 
 var React = require('react');
+var _ = require('backbone/node_modules/underscore');
+var Backbone = require('backparse');
+
+var userModel = require('../models/userModel');
+
+module.exports = React.createClass({
+	displayName: 'exports',
+
+	render: function render() {
+		return React.createElement(
+			'form',
+			null,
+			React.createElement(
+				'div',
+				{ className: 'headerwrap' },
+				React.createElement(
+					'a',
+					{ href: '#home', className: 'homeButton' },
+					' Home '
+				),
+				React.createElement('div', { className: 'marginTop' }),
+				React.createElement(
+					'div',
+					{ className: 'homehead' },
+					' Market List '
+				)
+			),
+			React.createElement(
+				'div',
+				{ className: 'container' },
+				React.createElement(
+					'div',
+					{ className: 'row' },
+					React.createElement(
+						'div',
+						{ className: 'col-sm-6' },
+						React.createElement(
+							'a',
+							{ href: '#hope', className: 'hope' },
+							React.createElement('img', { className: 'img-responsive', src: 'http://www.scrumptiouschef.com/food/wp-content/uploads/2014/03/hope.jpg' }),
+							React.createElement(
+								'div',
+								{ className: 'title' },
+								'Hope Farmers Market'
+							)
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'col-sm-6' },
+						React.createElement(
+							'a',
+							{ href: '#mueller', className: 'mueller' },
+							React.createElement('img', { className: 'img-responsive', src: 'http://tours.tourfactory.com/tours/media/scene/big2/00/19/23/32/19233219.jpg' }),
+							React.createElement(
+								'div',
+								{ className: 'title' },
+								'Mueller TFM'
+							)
+						)
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'row' },
+					React.createElement(
+						'div',
+						{ className: 'col-sm-6' },
+						React.createElement(
+							'a',
+							{ href: '#domain', className: 'domain' },
+							React.createElement('img', { className: 'img-responsive', src: 'http://texasfarmersmarket.org/wp-content/uploads/2015/04/TFMatDomain_location-615x346.jpg' }),
+							React.createElement(
+								'div',
+								{ className: 'title' },
+								'Domain TFM'
+							)
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'col-sm-6' },
+						React.createElement(
+							'a',
+							{ href: '#lakeline', className: 'lakeline' },
+							React.createElement('img', { className: 'img-responsive', src: 'http://texasfarmersmarket.org/wp-content/uploads/2012/04/cedarparkmkt_rooftop_01-980x654.jpg' }),
+							React.createElement(
+								'div',
+								{ className: 'title' },
+								'Lakeline TFM'
+							)
+						)
+					)
+				)
+			),
+			React.createElement(
+				'div',
+				{ className: 'bottomline' },
+				' '
+			)
+		);
+	}
+
+});
+
+},{"../models/userModel":173,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],168:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
 var $ = require('jQuery');
 window.jQuery = $;
 require('bootstrap/js/carousel.js');
@@ -35640,10 +35749,10 @@ module.exports = React.createClass({
 				),
 				React.createElement(
 					'div',
-					{ className: 'headerwrap' },
+					{ className: 'headerwraphome' },
 					React.createElement(
 						'div',
-						{ className: 'homehead' },
+						{ className: 'homeheadhome' },
 						' Market List '
 					)
 				),
@@ -35729,12 +35838,12 @@ module.exports = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ className: 'bottomline' },
+				{ className: 'bottomlinehome' },
 				' '
 			),
 			React.createElement(
 				'a',
-				{ href: '#findMarket', className: 'findMarketButton' },
+				{ href: '#findmarket', className: 'findMarketButton' },
 				' Find a market '
 			),
 			React.createElement(
@@ -35747,7 +35856,7 @@ module.exports = React.createClass({
 
 });
 
-},{"bootstrap/js/carousel.js":7,"jQuery":9,"react":165}],168:[function(require,module,exports){
+},{"bootstrap/js/carousel.js":7,"jQuery":9,"react":165}],169:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -35767,13 +35876,13 @@ module.exports = React.createClass({
 				'div',
 				null,
 				React.createElement(
-					'a',
-					{ href: '#home', className: 'homeButton' },
-					' Home '
-				),
-				React.createElement(
 					'div',
 					{ className: 'headerwrap' },
+					React.createElement(
+						'a',
+						{ href: '#home', className: 'homeButton' },
+						' Home '
+					),
 					React.createElement(
 						'div',
 						{ className: 'homehead' },
@@ -35782,50 +35891,54 @@ module.exports = React.createClass({
 				)
 			),
 			React.createElement(
-				'form',
-				{ className: 'form-horizontal' },
+				'div',
+				{ className: 'loginBlock' },
 				React.createElement(
-					'div',
-					{ className: 'form-group' },
-					React.createElement(
-						'label',
-						{ 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
-						'Email'
-					),
+					'form',
+					{ className: 'form-horizontal' },
 					React.createElement(
 						'div',
-						{ className: 'col-sm-10' },
-						React.createElement('input', { type: 'email', className: 'form-control inputEmail3', ref: 'loginEmail', placeholder: 'Email' })
-					)
-				),
-				React.createElement(
-					'div',
-					{ className: 'form-group' },
-					React.createElement(
-						'label',
-						{ 'for': 'inputPassword3', className: 'col-sm-2 control-label' },
-						'Password'
-					),
-					React.createElement(
-						'div',
-						{ className: 'col-sm-10' },
-						React.createElement('input', { type: 'password', className: 'form-control inputPassword3', ref: 'loginPassword', placeholder: 'Password' })
-					)
-				),
-				React.createElement(
-					'div',
-					{ className: 'form-group' },
-					React.createElement(
-						'div',
-						{ className: 'col-sm-offset-2 col-sm-10' },
+						{ className: 'form-group' },
 						React.createElement(
-							'button',
-							{ type: 'submit', className: 'btn btn-default' },
-							'Sign in'
+							'label',
+							{ 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
+							'Email'
+						),
+						React.createElement(
+							'div',
+							{ className: 'col-sm-10' },
+							React.createElement('input', { type: 'email', className: 'form-control inputEmail3', ref: 'loginEmail', placeholder: 'Email' })
 						)
-					)
-				),
-				React.createElement('div', { className: 'error', ref: 'loginError' })
+					),
+					React.createElement(
+						'div',
+						{ className: 'form-group' },
+						React.createElement(
+							'label',
+							{ 'for': 'inputPassword3', className: 'col-sm-2 control-label' },
+							'Password'
+						),
+						React.createElement(
+							'div',
+							{ className: 'col-sm-10' },
+							React.createElement('input', { type: 'password', className: 'form-control inputPassword3', ref: 'loginPassword', placeholder: 'Password' })
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'form-group' },
+						React.createElement(
+							'div',
+							{ className: 'col-sm-offset-2 col-sm-10' },
+							React.createElement(
+								'button',
+								{ type: 'submit', className: 'btn btn-default' },
+								'Sign in'
+							)
+						)
+					),
+					React.createElement('div', { className: 'error', ref: 'loginError' })
+				)
 			),
 			React.createElement('div', { className: 'bottomline' })
 		);
@@ -35855,7 +35968,7 @@ module.exports = React.createClass({
 
 });
 
-},{"../models/userModel":172,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],169:[function(require,module,exports){
+},{"../models/userModel":173,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],170:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -35877,13 +35990,13 @@ module.exports = React.createClass({
 			'form',
 			{ onSubmit: this.registerSubmit },
 			React.createElement(
-				'a',
-				{ href: '#home', className: 'homeButton' },
-				' Home '
-			),
-			React.createElement(
 				'div',
 				{ className: 'headerwrap' },
+				React.createElement(
+					'a',
+					{ href: '#home', className: 'homeButton' },
+					' Home '
+				),
 				React.createElement('div', { className: 'marginTop' }),
 				React.createElement(
 					'div',
@@ -35903,7 +36016,7 @@ module.exports = React.createClass({
 						React.createElement(
 							'div',
 							{ ref: 'vendorPhoto', className: 'vendorPhoto' },
-							'photo here'
+							React.createElement('img', { src: this.state.picture })
 						),
 						React.createElement(
 							'span',
@@ -35912,7 +36025,7 @@ module.exports = React.createClass({
 						),
 						React.createElement(
 							'button',
-							{ className: 'photoButton' },
+							{ onClick: this.pickPhoto, className: 'photoButton', type: 'button' },
 							' Upload Logo'
 						)
 					),
@@ -35992,16 +36105,59 @@ module.exports = React.createClass({
 							{ className: 'errors' },
 							this.state.errors.vendorEmail
 						),
-						React.createElement('input', { type: 'text', ref: 'vendorAddress', className: 'vendorAddress', placeholder: 'Address' }),
 						React.createElement(
-							'span',
-							{ className: 'errors' },
-							this.state.errors.vendorAddress
+							'div',
+							{ className: 'scroll' },
+							' Market',
+							React.createElement(
+								'select',
+								{ ref: 'vendorLocation' },
+								React.createElement(
+									'option',
+									{ value: '1' },
+									'Location'
+								),
+								React.createElement(
+									'option',
+									{ value: '2' },
+									'Hope FM'
+								),
+								React.createElement(
+									'option',
+									{ value: '3' },
+									'Lakeline TFM'
+								),
+								React.createElement(
+									'option',
+									{ value: '4' },
+									'Domain TFM'
+								),
+								React.createElement(
+									'option',
+									{ value: '5' },
+									'Mueller TFM'
+								),
+								React.createElement(
+									'option',
+									{ value: '6' },
+									'All of the above'
+								)
+							),
+							React.createElement(
+								'span',
+								{ className: 'errors' },
+								this.state.errors.scroll
+							)
 						)
 					),
 					React.createElement(
 						'div',
 						{ className: 'row' },
+						React.createElement(
+							'span',
+							{ className: 'errors' },
+							this.state.errors.servererror
+						),
 						React.createElement('textarea', { ref: 'vendorDescription', className: 'vendorDescription', placeholder: 'Business description' }),
 						React.createElement(
 							'span',
@@ -36024,30 +36180,46 @@ module.exports = React.createClass({
 		);
 	},
 
+	pickPhoto: function pickPhoto(e) {
+		var self = this;
+
+		console.log('hello');
+		filepicker.pickAndStore({
+			mimetype: 'image/*'
+		}, {}, function (response) {
+			console.log(response);
+			// self.setState({
+			// 	avatarUrl: InkBlobs[0].url
+			// });
+			self.setState({ picture: response[0].url });
+		});
+	},
+
 	registerSubmit: function registerSubmit(e) {
 		e.preventDefault();
 
+		var self = this;
 		var err = {};
 		var user = new userModel({
 			vendorName: this.refs.vendorName.getDOMNode().value,
-			vendorEmail: this.refs.vendorEmail.getDOMNode().value,
-			vendorPassword: this.refs.vendorPassword.getDOMNode().value,
+			username: this.refs.vendorEmail.getDOMNode().value,
+			password: this.refs.vendorPassword.getDOMNode().value,
 			vendorPasswordConfirm: this.refs.vendorPasswordConfirm.getDOMNode().value,
 			vendorContact: this.refs.vendorContact.getDOMNode().value,
-			vendorAddress: this.refs.vendorAddress.getDOMNode().value,
+			vendorLocation: this.refs.vendorLocation.getDOMNode().value,
 			vendorDescription: this.refs.vendorDescription.getDOMNode().value
 
 		});
 
-		if (!user.get('vendorName') || !user.get('vendorPassword') || !user.get('vendorEmail') || !user.get('vendorPasswordConfirm') || !user.get('vendorContact') || !user.get('vendorAddress') || !user.get('vendorDescription')) {
+		if (!user.get('vendorName') || !user.get('password') || !user.get('username') || !user.get('vendorPasswordConfirm') || !user.get('vendorContact') || !user.get('vendorLocation') || !user.get('vendorDescription')) {
 
 			if (!user.get('vendorName')) {
 				err.vendorName = 'You must enter a vendor name';
 			}
-			if (!user.get('vendorEmail')) {
+			if (!user.get('username')) {
 				err.vendorEmail = 'You must enter a vendor Email';
 			}
-			if (!user.get('vendorPassword')) {
+			if (!user.get('password')) {
 				err.vendorPassword = 'You must enter a Password';
 			}
 			if (!user.get('vendorPasswordConfirm')) {
@@ -36059,21 +36231,32 @@ module.exports = React.createClass({
 			if (!user.get('vendorDescription')) {
 				err.vendorDescription = 'You must enter a vendor description';
 			}
-			if (!user.get('vendorAddress')) {
-				err.vendorAddress = 'You must enter an address';
+			if (!user.get('vendorLocation')) {
+				err.vendorLocation = 'You must choose your location';
 			}
+
+			this.setState({ errors: err });
 		} else {
-			user.save();
-			app.navigate('vendorProfile', { trigger: true });
+			user.save(null, {
+				success: function success() {
+					self.props.router.navigate('vendorprofile', { trigger: true });
+				},
+
+				error: function error(userModel, response) {
+					self.setState({
+						errors: { servererror: response.responseJSON.error
+						}
+					});
+				}
+
+			});
 		}
 		console.log(err);
-
-		this.setState({ errors: err });
 	}
 
 });
 
-},{"../models/userModel":172,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],170:[function(require,module,exports){
+},{"../models/userModel":173,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],171:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -36087,15 +36270,85 @@ module.exports = React.createClass({
 
 	render: function render() {
 		return React.createElement(
-			'div',
+			'form',
 			null,
-			' '
+			React.createElement(
+				'div',
+				{ className: 'headerwrap' },
+				React.createElement(
+					'a',
+					{ href: '#editmarketlist', className: 'editmarketlistButton' },
+					' Edit your list '
+				),
+				React.createElement(
+					'a',
+					{ href: '#editprofile', className: 'editprofileButton' },
+					' Edit Profile '
+				),
+				React.createElement('div', { className: 'marginTop' }),
+				React.createElement(
+					'div',
+					{ className: 'homehead' },
+					' Market List '
+				)
+			),
+			React.createElement(
+				'div',
+				{ className: 'container' },
+				React.createElement(
+					'div',
+					{ className: 'row' },
+					React.createElement(
+						'div',
+						{ className: 'col-sm-4' },
+						React.createElement(
+							'div',
+							{ ref: 'vendorPhoto', className: 'vendorPhoto' },
+							'photo here'
+						)
+					),
+					React.createElement(
+						'div',
+						null,
+						React.createElement(
+							'label',
+							{ htmlFor: 'vendorNameProfile', className: 'col-sm-2 control-label' },
+							'Vendor Name'
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'col-sm-10' },
+						React.createElement('input', { type: 'vendorNameProfile', className: 'form-control', ref: '' })
+					),
+					React.createElement(
+						'div',
+						null,
+						React.createElement(
+							'label',
+							{ htmlFor: 'vendorDescription', className: 'col-sm-2 control-label' },
+							'Vendor Description'
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'col-sm-10' },
+						React.createElement('input', { type: 'vendorDescription', className: 'form-control', ref: '' })
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'row' },
+					React.createElement('textarea', { ref: 'vendorDescription', className: 'vendorDescription', placeholder: 'Business description' })
+				)
+			),
+			React.createElement('div', { className: 'bottomline' })
 		);
 	}
 
 });
 
-},{"../models/userModel":172,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],171:[function(require,module,exports){
+},{"../models/userModel":173,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],172:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -36103,8 +36356,11 @@ var Backbone = require('backbone');
 
 var Home = require('./components/homePageComponent');
 var SignUp = require('./components/signUpComponent');
+filepicker.setKey('A6o1LvSOGRPGGwCAWAvQLz');
+
 var VendorProfile = require('./components/vendorProfileComponent');
 var LogIn = require('./components/logInComponent');
+var FindMarket = require('./components/findMarketComponent');
 
 var userModel = require('./models/userModel');
 
@@ -36116,7 +36372,8 @@ var App = Backbone.Router.extend({
 		'home': 'home',
 		'signup': 'signup',
 		'vendorprofile': 'vendorprofile',
-		'login': 'login'
+		'login': 'login',
+		'findmarket': 'findmarket'
 	},
 
 	home: function home() {
@@ -36124,15 +36381,20 @@ var App = Backbone.Router.extend({
 	},
 
 	signup: function signup() {
-		React.render(React.createElement(SignUp, null), document.querySelector('#container'));
+		React.render(React.createElement(SignUp, { router: app, user: user }), document.querySelector('#container'));
 	},
 
 	vendorprofile: function vendorprofile() {
+		// React.render(<VendorProfile user={user}/>,document.querySelector('#container'));
 		React.render(React.createElement(VendorProfile, null), document.querySelector('#container'));
 	},
 
 	login: function login() {
 		React.render(React.createElement(LogIn, null), document.querySelector('#container'));
+	},
+
+	findmarket: function findmarket() {
+		React.render(React.createElement(FindMarket, null), document.querySelector('#container'));
 	}
 
 });
@@ -36141,7 +36403,7 @@ var app = new App();
 Backbone.history.start();
 // app.navigate('home')
 
-},{"./components/homePageComponent":167,"./components/logInComponent":168,"./components/signUpComponent":169,"./components/vendorProfileComponent":170,"./models/userModel":172,"backbone":1,"react":165}],172:[function(require,module,exports){
+},{"./components/findMarketComponent":167,"./components/homePageComponent":168,"./components/logInComponent":169,"./components/signUpComponent":170,"./components/vendorProfileComponent":171,"./models/userModel":173,"backbone":1,"react":165}],173:[function(require,module,exports){
 'use strict';
 
 var Backbone = require('backparse')({
@@ -36156,12 +36418,12 @@ var validator = require('validator');
 
 module.exports = Backbone.Model.extend({
 	defaults: {
-		vendorEmail: null,
-		vendorPassword: null,
+		username: null,
+		password: null,
 		vendorPasswordConfirm: null,
 		vendorName: null,
 		vendorContact: null,
-		vendorAddress: null,
+		vendorLocation: null,
 		businessType: null,
 		imageId: null
 	},
@@ -36175,7 +36437,7 @@ module.exports = Backbone.Model.extend({
 	}
 });
 
-},{"backparse":3,"jquery":10,"validator":166}]},{},[171])
+},{"backparse":3,"jquery":10,"validator":166}]},{},[172])
 
 
 //# sourceMappingURL=all.js.map

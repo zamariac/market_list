@@ -1,8 +1,17 @@
+.headerwraphome{
+	height: 75px;
+	border-bottom: 5px solid red;
+	background-color: white;
 
+}
 
 .headerwrap{
 	height: 75px;
 	border-bottom: 5px solid red;
+	text-shadow: 1px 0 black;
+	background-image: url("http://violetmeyer.com/wp-content/uploads/2014/09/Farmers-market-bounty-tomatoes.jpg");
+	background-size: cover;
+	opacity: .7;
 }
 
 .logInButton {
@@ -22,11 +31,24 @@
 	font-size: 35px;
 	position: relative;
 	margin-left: 30px;
-	top:37px;
+	top:30px;
 	width: 184px;
 	padding: 0 6px;
-	background-color: white;
 	overflow: hidden;
+	text-shadow: 3px 0 black;
+}
+
+.homeheadhome{
+	color: red;
+	font-family: arial;
+	font-size: 35px;
+	position: relative;
+	margin-left: 30px;
+	top:30px;
+	width: 184px;
+	padding: 0 6px;
+	overflow: hidden;
+	text-shadow: 2px 0 gray;
 }
 
 .item{
@@ -47,30 +69,31 @@
 }
 
 .bottomline{
-	height:5px;
-	background-color:red;
-
+	border-top: 5px solid red;
+	background-image: url("http://violetmeyer.com/wp-content/uploads/2014/09/Farmers-market-bounty-tomatoes.jpg");
+	background-size: cover;
+	opacity: .7;
+	height: 500px;
 }
+
+.bottomlinehome{
+	border-top: 5px solid red;
+}
+
+
 
 .findMarketButton{
 	margin-left:25px;
 	font-family: arial;
-	font-size: 35px;
+	font-size: 30px;
 	color: red;
-	
-	
-
 }
 
 .signUpButton{
 	margin-left:50px;
 	font-family: arial;
-	font-size: 35px;
+	font-size: 30px;
 	color: red;
-	
-	
-	
-
 }
 
 .vendorPhoto{
@@ -150,11 +173,25 @@
 
 	margin-top: 25px;
 	margin-right: 25px;
+}
 
+.logOutButton {
+	float:right;
+	color:red;
+	font-family: arial;
+	font-size: 15px;
+
+	margin-top: 25px;
+	margin-right: 25px;
+}
+
+.loginBlock {
+	height: 300px;
+	padding-top: 50px;
 }
 
 
-.logOutButton {
+.logInButton {
 	float:right;
 	color:red;
 	font-family: arial;
@@ -166,7 +203,33 @@
 }
 
 
+.editmarketlistButton {
+	float:right;
+	color:red;
+	font-family: arial;
+	font-size: 15px;
 
+	margin-top: 25px;
+	margin-right: 25px;
+
+}
+
+.editprofileButton {
+	float:right;
+	color:red;
+	font-family: arial;
+	font-size: 15px;
+
+	margin-top: 25px;
+	margin-right: 25px;
+
+}
+
+.img-resposive{
+        height: 135px;
+  		width:100%;
+  		
+  	}
 
 @media (min-width: 750px) {
 	.headerwrap{
@@ -184,10 +247,9 @@
 	font-size: 44px;
 	position: relative;
 	margin-left: 30px;
-	top:48px;
+	top:40px;
 	width: 228px;
 	padding: 0 6px;
-	background-color: white;
 	overflow: hidden;
 }
 	.intro{
@@ -197,6 +259,13 @@
 	text-shadow: 4px 0 gray;
 	text-align: left; 
 	line-height: 125px;      
+}
+
+.bottomline{
+	border-top: 5px solid red;
+	background-image: url("http://violetmeyer.com/wp-content/uploads/2014/09/Farmers-market-bounty-tomatoes.jpg");
+	background-size: cover;
+	height: 500px;
 }
 
 
@@ -215,14 +284,24 @@
 }
 	.findMarketButton{
 	margin-left: 370px;
+	font-size: 40px;
   
   }
   .signUpButton{
   	margin-left: 100px;
+  	font-size: 40px;
 
   }
 
+  .loginBlock{
+  	padding-top: 100px;
+  	padding-right: 150px;
+  	padding-left: 50px;
+  }
+
 }
+
+
 
 
 

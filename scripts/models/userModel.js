@@ -10,12 +10,12 @@ var validator = require('validator');
 
 module.exports = Backbone.Model.extend({
 	defaults: {
-		vendorEmail: null,
-		vendorPassword: null,
+		username: null,
+		password: null,
 		vendorPasswordConfirm: null,
 		vendorName:null,
 		vendorContact:null,
-		vendorAddress: null,
+		vendorLocation: null,
 		businessType: null,
 		imageId: null,
 	},
