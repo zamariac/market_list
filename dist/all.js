@@ -35862,13 +35862,27 @@ module.exports = React.createClass({
 var React = require('react');
 var _ = require('backbone/node_modules/underscore');
 var Backbone = require('backparse');
+var validator = require('validator');
 
 var userModel = require('../models/userModel');
 
 module.exports = React.createClass({
 	displayName: 'exports',
 
+	getInitialState: function getInitialState() {
+		return {
+			errors: {}
+		};
+	},
 	render: function render() {
+		var genericError = null;
+		if (this.state.errors.generic) {
+			genericError = React.createElement(
+				'div',
+				{ className: 'alert alert-danger', role: 'alert' },
+				this.state.errors.generic
+			);
+		}
 		return React.createElement(
 			'div',
 			{ className: 'signupForm', ref: 'loginPage', onSubmit: this.login },
@@ -35893,9 +35907,10 @@ module.exports = React.createClass({
 			React.createElement(
 				'div',
 				{ className: 'loginBlock' },
+				genericError,
 				React.createElement(
 					'form',
-					{ className: 'form-horizontal' },
+					{ className: 'form-horizontal', onSubmit: this.onLogin },
 					React.createElement(
 						'div',
 						{ className: 'form-group' },
@@ -35907,7 +35922,12 @@ module.exports = React.createClass({
 						React.createElement(
 							'div',
 							{ className: 'col-sm-10' },
-							React.createElement('input', { type: 'email', className: 'form-control inputEmail3', ref: 'loginEmail', placeholder: 'Email' })
+							React.createElement('input', { type: 'email', className: 'form-control inputEmail3', ref: 'loginEmail', placeholder: 'Email' }),
+							React.createElement(
+								'div',
+								{ className: 'errors', style: errors, ref: 'loginEmailErrors' },
+								this.state.errors.loginEmail
+							)
 						)
 					),
 					React.createElement(
@@ -35921,7 +35941,12 @@ module.exports = React.createClass({
 						React.createElement(
 							'div',
 							{ className: 'col-sm-10' },
-							React.createElement('input', { type: 'password', className: 'form-control inputPassword3', ref: 'loginPassword', placeholder: 'Password' })
+							React.createElement('input', { type: 'password', className: 'form-control inputPassword3', ref: 'loginPassword', placeholder: 'Password' }),
+							React.createElement(
+								'div',
+								{ className: 'errors', style: errors, ref: 'loginPasswordErrors' },
+								this.state.errors.loginPasswordError
+							)
 						)
 					),
 					React.createElement(
@@ -35936,39 +35961,59 @@ module.exports = React.createClass({
 								'Sign in'
 							)
 						)
-					),
-					React.createElement('div', { className: 'error', ref: 'loginError' })
+					)
 				)
 			),
 			React.createElement('div', { className: 'bottomline' })
 		);
 	},
 
+	hasError: function hasError(errors) {
+		for (var i in errors) {
+			if (errors[i]) {
+				return true;
+			}
+		}
+		return false;
+	},
+
 	login: function login(e) {
 		e.preventDefault();
 		var self = this;
-		var currentUser = new UserModel({
-			vendorEmail: this.refs.loginEmail.getDOMNode().value,
-			vendorPassword: this.refs.loginPassword.getDOMNode().value
-		});
+		var login = {
+			username: this.refs.loginEmail.getDOMNode().value,
+			Password: this.refs.loginPassword.getDOMNode().value
+		};
 
-		if (currentUser.isValid()) {
-			$.post('#login', currentUser.attributes).success(function (user) {
-				App.navigate('#vendorprofile', { trigger: true });
-				console.log('success');
-			}).error(function (error) {
-				console.log('get error');
-				self.refs.loginError.getDOMNode().innerHTML = error.responseJSON.error;
+		var errors = this.getInitialState().errors;
+
+		if (!login.username) {
+			errors.loginEmail = 'Please enter an email address';
+		} else if (!validator.isloginEmail(login.username)) {
+			errors.loginEmail = 'This looks like an invalid email address';
+		}
+		if (!login.password) {
+			errors.loginPassword = 'Please enter a password';
+		}
+
+		this.setState({ errors: errors });
+
+		if (!this.hasError(errors)) {
+			this.props.user.login(login, {
+				success: function success(userModel) {
+					self.props.router.navigate('vendorprofile', { trigger: true });
+				},
+
+				error: function error(userModel, response) {
+					self.setState({ generic: response.responseJSON.error });
+				}
 			});
-		} else {
-			console.log('js error');
-			this.refs.loginError.getDOMNode().innerHTML = currentUser.validationError;
 		}
 	}
 
 });
 
-},{"../models/userModel":173,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],170:[function(require,module,exports){
+},{"../models/userModel":173,"backbone/node_modules/underscore":2,"backparse":3,"react":165,"validator":166}],170:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -36062,11 +36107,11 @@ module.exports = React.createClass({
 						{ className: 'col-sm-4' },
 						React.createElement(
 							'div',
-							{ ref: 'scroll', className: 'scroll' },
+							{ className: 'scroll' },
 							' Business',
 							React.createElement(
 								'select',
-								null,
+								{ ref: 'vendorType' },
 								React.createElement(
 									'option',
 									{ value: '1' },
@@ -36096,7 +36141,7 @@ module.exports = React.createClass({
 							React.createElement(
 								'span',
 								{ className: 'errors' },
-								this.state.errors.scroll
+								this.state.errors.typescroll
 							)
 						),
 						React.createElement('input', { type: 'text', ref: 'vendorEmail', className: 'vendorEmail', placeholder: 'Email' }),
@@ -36146,7 +36191,7 @@ module.exports = React.createClass({
 							React.createElement(
 								'span',
 								{ className: 'errors' },
-								this.state.errors.scroll
+								this.state.errors.locationScroll
 							)
 						)
 					),
@@ -36207,11 +36252,12 @@ module.exports = React.createClass({
 			vendorPasswordConfirm: this.refs.vendorPasswordConfirm.getDOMNode().value,
 			vendorContact: this.refs.vendorContact.getDOMNode().value,
 			vendorLocation: this.refs.vendorLocation.getDOMNode().value,
+			vendorType: this.refs.vendorType.getDOMNode().value,
 			vendorDescription: this.refs.vendorDescription.getDOMNode().value
 
 		});
 
-		if (!user.get('vendorName') || !user.get('password') || !user.get('username') || !user.get('vendorPasswordConfirm') || !user.get('vendorContact') || !user.get('vendorLocation') || !user.get('vendorDescription')) {
+		if (!user.get('vendorName') || !user.get('password') || !user.get('username') || !user.get('vendorPasswordConfirm') || !user.get('vendorContact') || !user.get('vendorLocation') || !user.get('vendorDescription') || !user.get('vendorType')) {
 
 			if (!user.get('vendorName')) {
 				err.vendorName = 'You must enter a vendor name';
@@ -36231,8 +36277,11 @@ module.exports = React.createClass({
 			if (!user.get('vendorDescription')) {
 				err.vendorDescription = 'You must enter a vendor description';
 			}
-			if (!user.get('vendorLocation')) {
+			if (!user.get('vendorLocation === 1')) {
 				err.vendorLocation = 'You must choose your location';
+			}
+			if (!user.get('vendorType === 1')) {
+				err.vendorLocation = 'You must choose your a business type';
 			}
 
 			this.setState({ errors: err });

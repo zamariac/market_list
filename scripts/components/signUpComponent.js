@@ -39,15 +39,15 @@ module.exports = React.createClass({
 										<span className="errors">{this.state.errors.vendorPasswordConfirm}</span>
   							</div>
   							<div className="col-sm-4">
-  									<div ref="scroll" className="scroll"> Business
-										<select>
+  									<div className="scroll"> Business
+										<select ref="vendorType">
 										<option value="1">Type</option>
 					    				<option value="2">Vegetables</option>
 					    				<option value="3">Meat Eggs & Dairy</option>
 					    				<option value="4">Artisan Food</option>
 					    				<option value="5">Miscellany Goods</option>
 										</select>
-									<span className="errors">{this.state.errors.scroll}</span>
+									<span className="errors">{this.state.errors.typescroll}</span>
 									</div>
 								<input type="text" ref="vendorEmail" className="vendorEmail" placeholder="Email"/>
 										<span className="errors">{this.state.errors.vendorEmail}</span>
@@ -60,7 +60,7 @@ module.exports = React.createClass({
 					    				<option value="5">Mueller TFM</option>
 					    				<option value="6">All of the above</option>
 										</select>
-									<span className="errors">{this.state.errors.scroll}</span>
+									<span className="errors">{this.state.errors.locationScroll}</span>
 									</div>
   							</div>
   							<div className="row">
@@ -109,14 +109,16 @@ module.exports = React.createClass({
 			vendorPasswordConfirm: this.refs.vendorPasswordConfirm.getDOMNode().value,
 			vendorContact: this.refs.vendorContact.getDOMNode().value, 
 			vendorLocation: this.refs.vendorLocation.getDOMNode().value,
+			vendorType: this.refs.vendorType.getDOMNode().value,
 			vendorDescription: this.refs.vendorDescription.getDOMNode().value,
+			
 
 
 		});
 
 
 		if(!user.get('vendorName') || !user.get('password') || !user.get('username') || !user.get('vendorPasswordConfirm')
-			|| !user.get('vendorContact')|| !user.get('vendorLocation')|| !user.get('vendorDescription')){
+		|| !user.get('vendorContact')|| !user.get('vendorLocation')|| !user.get('vendorDescription')|| !user.get('vendorType')){
 
 			if(!user.get('vendorName')){
 				err.vendorName = 'You must enter a vendor name';
@@ -136,8 +138,11 @@ module.exports = React.createClass({
 			if(!user.get('vendorDescription')){
 				err.vendorDescription = 'You must enter a vendor description';
 			}
-			if(!user.get('vendorLocation')){
+			if(!user.get('vendorLocation === 1')){
 				err.vendorLocation = 'You must choose your location';
+			}
+			if(!user.get('vendorType === 1')){
+				err.vendorLocation = 'You must choose your a business type';
 			}
 
 			this.setState({errors:err});

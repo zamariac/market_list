@@ -1,3 +1,7 @@
+@-ms-viewport{
+  width: device-width;
+}
+
 .headerwraphome{
 	height: 75px;
 	border-bottom: 5px solid red;
@@ -85,14 +89,14 @@
 .findMarketButton{
 	margin-left:25px;
 	font-family: arial;
-	font-size: 30px;
+	font-size: 28px;
 	color: red;
 }
 
 .signUpButton{
 	margin-left:50px;
 	font-family: arial;
-	font-size: 30px;
+	font-size: 28px;
 	color: red;
 }
 
@@ -274,7 +278,7 @@
 @media (min-width: 970px) {
 	.intro{
 	font-family: helvetica;
-	font-size: 147px;
+	font-size: 130px;
 	color: white; 
 	text-shadow: 4px 0 gray;
 	text-align: left; 

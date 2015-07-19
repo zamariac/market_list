@@ -1,12 +1,22 @@
 var React = require('react');
 var _ = require('backbone/node_modules/underscore');
 var Backbone = require('backparse');
+var validator = require('validator');
 
 var userModel = require('../models/userModel');
 
 
 module.exports = React.createClass({
+		getInitialState: function(){
+			return {
+				errors:{}
+			}
+		},
 	render: function(){
+		var genericError = null;
+		if (this.state.errors.generic) {
+			genericError = (<div className="alert alert-danger" role="alert">{this.state.errors.generic}</div>);
+		}
 		return (
 			<div className="signupForm" ref="loginPage" onSubmit = {this.login}>
 				<div>
@@ -17,17 +27,20 @@ module.exports = React.createClass({
 						</div>
 				</div>
 				<div className="loginBlock">
-				<form className="form-horizontal">
+					{genericError}
+				<form className="form-horizontal" onSubmit={this.onLogin}>
 		  				<div className="form-group">
 		    				<label for="inputEmail3" className="col-sm-2 control-label">Email</label>
 		    				<div className="col-sm-10">
 		      					<input type="email" className="form-control inputEmail3" ref="loginEmail" placeholder="Email"/>
+		      					<div className='errors' style={errors} ref='loginEmailErrors'>{this.state.errors.loginEmail}</div> 
 		    				</div>
 		  				</div>
 		 			 	<div className="form-group">
 		    					<label for="inputPassword3" className="col-sm-2 control-label">Password</label>
 		    				<div className="col-sm-10">
 		      					<input type="password" className="form-control inputPassword3" ref="loginPassword" placeholder="Password"/>
+		      					<div className='errors' style={errors} ref='loginPasswordErrors'>{this.state.errors.loginPasswordError}</div> 
 		   				    </div>
 		  				</div>
 		  				
@@ -36,7 +49,6 @@ module.exports = React.createClass({
 					      <button type="submit" className="btn btn-default">Sign in</button>
 					    </div>
 					  </div>
-					  <div className="error" ref="loginError"></div>
 				</form>
 				</div>
 				<div className="bottomline"></div>
@@ -45,33 +57,50 @@ module.exports = React.createClass({
 		)
 	},
 
+	hasError: function(errors){
+		for (var i in errors){
+				if(errors[i]){
+					return true;
+				}
+		}
+		return false;
+	},
+
 	login: function(e){
 		e.preventDefault()
 		var self = this;
-		var currentUser = new UserModel({
-			vendorEmail: this.refs.loginEmail.getDOMNode().value,
-			vendorPassword: this.refs.loginPassword.getDOMNode().value,
-		});
+		var login = {
+			username: this.refs.loginEmail.getDOMNode().value,
+			Password: this.refs.loginPassword.getDOMNode().value,
+		};
 
-		if(currentUser.isValid()) {
-			$.post(
-				'#login',
-				currentUser.attributes
-				)
+		var errors = this.getInitialState().errors;
 
-			.success(function(user){
-				App.navigate('#vendorprofile', {trigger:true});
-				console.log('success');
-			})
-			.error(function(error){
-				console.log('get error')
-			self.refs.loginError.getDOMNode().innerHTML = error.responseJSON.error;
-		})
+		if(!login.username){
+			errors.loginEmail = 'Please enter an email address';
 		}
-		else {
-			console.log('js error');
-			this.refs.loginError.getDOMNode().innerHTML = currentUser.validationError;
+		 else if (!validator.isloginEmail(login.username)){
+		 	errors.loginEmail = 'This looks like an invalid email address'
+		 }
+		if(!login.password){
+			errors.loginPassword = 'Please enter a password';
+		} 
+
+		this.setState({errors:errors});
+
+		if(!this.hasError(errors)){
+			this.props.user.login(login,{
+				success: function(userModel){
+					self.props.router.navigate('vendorprofile', {trigger:true});
+				},
+
+				error: function(userModel, response){
+					self.setState({generic: response.responseJSON.error});
+				}
+			});
 		}
+
+
 	}
 
 
