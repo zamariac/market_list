@@ -35916,7 +35916,7 @@ module.exports = React.createClass({
 						{ className: 'form-group' },
 						React.createElement(
 							'label',
-							{ 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
+							{ htmlFor: 'inputEmail3', className: 'col-sm-2 control-label' },
 							'Email'
 						),
 						React.createElement(
@@ -35925,7 +35925,7 @@ module.exports = React.createClass({
 							React.createElement('input', { type: 'email', className: 'form-control inputEmail3', ref: 'loginEmail', placeholder: 'Email' }),
 							React.createElement(
 								'div',
-								{ className: 'errors', style: errors, ref: 'loginEmailErrors' },
+								{ className: 'errors' },
 								this.state.errors.loginEmail
 							)
 						)
@@ -35935,7 +35935,7 @@ module.exports = React.createClass({
 						{ className: 'form-group' },
 						React.createElement(
 							'label',
-							{ 'for': 'inputPassword3', className: 'col-sm-2 control-label' },
+							{ htmlFor: 'inputPassword3', className: 'col-sm-2 control-label' },
 							'Password'
 						),
 						React.createElement(
@@ -35944,8 +35944,8 @@ module.exports = React.createClass({
 							React.createElement('input', { type: 'password', className: 'form-control inputPassword3', ref: 'loginPassword', placeholder: 'Password' }),
 							React.createElement(
 								'div',
-								{ className: 'errors', style: errors, ref: 'loginPasswordErrors' },
-								this.state.errors.loginPasswordError
+								{ className: 'errors' },
+								this.state.errors.loginPassword
 							)
 						)
 					),
@@ -35982,14 +35982,14 @@ module.exports = React.createClass({
 		var self = this;
 		var login = {
 			username: this.refs.loginEmail.getDOMNode().value,
-			Password: this.refs.loginPassword.getDOMNode().value
+			password: this.refs.loginPassword.getDOMNode().value
 		};
 
 		var errors = this.getInitialState().errors;
 
 		if (!login.username) {
 			errors.loginEmail = 'Please enter an email address';
-		} else if (!validator.isloginEmail(login.username)) {
+		} else if (!validator.isEmail(login.username)) {
 			errors.loginEmail = 'This looks like an invalid email address';
 		}
 		if (!login.password) {
@@ -36061,7 +36061,7 @@ module.exports = React.createClass({
 						React.createElement(
 							'div',
 							{ ref: 'vendorPhoto', className: 'vendorPhoto' },
-							React.createElement('img', { src: this.state.picture })
+							React.createElement('img', { src: this.state.vendorPhoto })
 						),
 						React.createElement(
 							'span',
@@ -36141,7 +36141,7 @@ module.exports = React.createClass({
 							React.createElement(
 								'span',
 								{ className: 'errors' },
-								this.state.errors.typescroll
+								this.state.errors.vendorType
 							)
 						),
 						React.createElement('input', { type: 'text', ref: 'vendorEmail', className: 'vendorEmail', placeholder: 'Email' }),
@@ -36191,7 +36191,7 @@ module.exports = React.createClass({
 							React.createElement(
 								'span',
 								{ className: 'errors' },
-								this.state.errors.locationScroll
+								this.state.errors.vendorLocation
 							)
 						)
 					),
@@ -36236,7 +36236,7 @@ module.exports = React.createClass({
 			// self.setState({
 			// 	avatarUrl: InkBlobs[0].url
 			// });
-			self.setState({ picture: response[0].url });
+			self.setState({ vendorPhoto: response[0].url });
 		});
 	},
 
@@ -36253,11 +36253,13 @@ module.exports = React.createClass({
 			vendorContact: this.refs.vendorContact.getDOMNode().value,
 			vendorLocation: this.refs.vendorLocation.getDOMNode().value,
 			vendorType: this.refs.vendorType.getDOMNode().value,
-			vendorDescription: this.refs.vendorDescription.getDOMNode().value
+			vendorDescription: this.refs.vendorDescription.getDOMNode().value,
+			vendorPhoto: this.state.vendorPhoto
 
 		});
+		console.log(user);
 
-		if (!user.get('vendorName') || !user.get('password') || !user.get('username') || !user.get('vendorPasswordConfirm') || !user.get('vendorContact') || !user.get('vendorLocation') || !user.get('vendorDescription') || !user.get('vendorType')) {
+		if (!user.get('vendorName') || !user.get('password') || !user.get('username') || !user.get('vendorPasswordConfirm') || !user.get('vendorContact') || user.get('vendorLocation') === '1' || !user.get('vendorDescription') || user.get('vendorType') === '1') {
 
 			if (!user.get('vendorName')) {
 				err.vendorName = 'You must enter a vendor name';
@@ -36277,11 +36279,11 @@ module.exports = React.createClass({
 			if (!user.get('vendorDescription')) {
 				err.vendorDescription = 'You must enter a vendor description';
 			}
-			if (!user.get('vendorLocation === 1')) {
+			if (user.get('vendorLocation') === '1') {
 				err.vendorLocation = 'You must choose your location';
 			}
-			if (!user.get('vendorType === 1')) {
-				err.vendorLocation = 'You must choose your a business type';
+			if (user.get('vendorType') === '1') {
+				err.vendorType = 'You must choose your a business type';
 			}
 
 			this.setState({ errors: err });
@@ -36318,6 +36320,7 @@ module.exports = React.createClass({
 	displayName: 'exports',
 
 	render: function render() {
+		console.log(this.props.user);
 		return React.createElement(
 			'form',
 			null,
@@ -36353,17 +36356,13 @@ module.exports = React.createClass({
 						React.createElement(
 							'div',
 							{ ref: 'vendorPhoto', className: 'vendorPhoto' },
-							'photo here'
+							React.createElement('img', { src: this.props.user.get('vendorPhoto') })
 						)
 					),
 					React.createElement(
 						'div',
 						null,
-						React.createElement(
-							'label',
-							{ htmlFor: 'vendorNameProfile', className: 'col-sm-2 control-label' },
-							'Vendor Name'
-						)
+						React.createElement('label', { htmlFor: 'vendorNameProfile', className: 'col-sm-2 control-label', placeholder: 'Vendor Name' })
 					),
 					React.createElement(
 						'div',
@@ -36434,12 +36433,11 @@ var App = Backbone.Router.extend({
 	},
 
 	vendorprofile: function vendorprofile() {
-		// React.render(<VendorProfile user={user}/>,document.querySelector('#container'));
-		React.render(React.createElement(VendorProfile, null), document.querySelector('#container'));
+		React.render(React.createElement(VendorProfile, { user: user }), document.querySelector('#container'));
 	},
 
 	login: function login() {
-		React.render(React.createElement(LogIn, null), document.querySelector('#container'));
+		React.render(React.createElement(LogIn, { router: app, user: user }), document.querySelector('#container'));
 	},
 
 	findmarket: function findmarket() {
@@ -36473,8 +36471,8 @@ module.exports = Backbone.Model.extend({
 		vendorName: null,
 		vendorContact: null,
 		vendorLocation: null,
-		businessType: null,
-		imageId: null
+		vendorType: null,
+		vendorPhoto: null
 	},
 
 	parseClassName: '_User',

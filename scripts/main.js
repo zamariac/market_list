@@ -34,13 +34,12 @@ var App = Backbone.Router.extend({
 	},
 
 	vendorprofile: function(){
-		// React.render(<VendorProfile user={user}/>,document.querySelector('#container'));
-		React.render(<VendorProfile />,document.querySelector('#container'));
+		React.render(<VendorProfile user={user}/>,document.querySelector('#container'));
 
 	},
 
 	login: function(){
-		React.render(<LogIn/>,document.querySelector('#container'));
+		React.render(<LogIn router={app} user={user}/>,document.querySelector('#container'));
 	},
 
 	findmarket: function(){

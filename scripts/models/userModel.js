@@ -16,8 +16,8 @@ module.exports = Backbone.Model.extend({
 		vendorName:null,
 		vendorContact:null,
 		vendorLocation: null,
-		businessType: null,
-		imageId: null,
+		vendorType: null,
+		vendorPhoto: null,
 	},
 
 	parseClassName: '_User',

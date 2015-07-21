@@ -30,17 +30,18 @@ module.exports = React.createClass({
 					{genericError}
 				<form className="form-horizontal" onSubmit={this.onLogin}>
 		  				<div className="form-group">
-		    				<label for="inputEmail3" className="col-sm-2 control-label">Email</label>
+		    				<label htmlFor="inputEmail3" className="col-sm-2 control-label">Email</label>
 		    				<div className="col-sm-10">
 		      					<input type="email" className="form-control inputEmail3" ref="loginEmail" placeholder="Email"/>
-		      					<div className='errors' style={errors} ref='loginEmailErrors'>{this.state.errors.loginEmail}</div> 
+		      					<div className='errors'>{this.state.errors.loginEmail}</div> 
 		    				</div>
+
 		  				</div>
 		 			 	<div className="form-group">
-		    					<label for="inputPassword3" className="col-sm-2 control-label">Password</label>
+		    					<label htmlFor="inputPassword3" className="col-sm-2 control-label">Password</label>
 		    				<div className="col-sm-10">
 		      					<input type="password" className="form-control inputPassword3" ref="loginPassword" placeholder="Password"/>
-		      					<div className='errors' style={errors} ref='loginPasswordErrors'>{this.state.errors.loginPasswordError}</div> 
+		      					<div className='errors'>{this.state.errors.loginPassword}</div> 
 		   				    </div>
 		  				</div>
 		  				
@@ -71,7 +72,7 @@ module.exports = React.createClass({
 		var self = this;
 		var login = {
 			username: this.refs.loginEmail.getDOMNode().value,
-			Password: this.refs.loginPassword.getDOMNode().value,
+			password: this.refs.loginPassword.getDOMNode().value,
 		};
 
 		var errors = this.getInitialState().errors;
@@ -79,8 +80,8 @@ module.exports = React.createClass({
 		if(!login.username){
 			errors.loginEmail = 'Please enter an email address';
 		}
-		 else if (!validator.isloginEmail(login.username)){
-		 	errors.loginEmail = 'This looks like an invalid email address'
+		 else if (!validator.isEmail(login.username)){
+		 	errors.loginEmail = 'This looks like an invalid email address';
 		 }
 		if(!login.password){
 			errors.loginPassword = 'Please enter a password';

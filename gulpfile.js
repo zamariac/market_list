@@ -15,11 +15,16 @@ var customOpts = {
 	debug: true
 };
 var opts = assign({}, watchify.args, customOpts);
-var b = watchify(browserify(opts).transform(babelify));
+var b = watchify(browserify(opts).transform(babelify), {poll: true});
 
 gulp.task('js', bundle); // so you can run `gulp js` to build the file
 b.on('update', bundle); // on any dep update, runs the bundler
 b.on('log', gutil.log); // output build logs to terminal
+
+gulp.task('build', function(){
+	console.log('start running build..');
+});
+
 
 gulp.task('webserver', function() {
 	gulp.src('./')

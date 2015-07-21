@@ -23,7 +23,7 @@ module.exports = React.createClass({
 				<div className="container">
 					<div className="row">
   							<div className="col-sm-4"> 
-								<div ref="vendorPhoto"className="vendorPhoto"><img src={this.state.picture}/></div>
+								<div ref="vendorPhoto"className="vendorPhoto"><img src={this.state.vendorPhoto}/></div>
 								<span className="errors">{this.state.errors.vendorPhoto}</span>
 
 								<button onClick={this.pickPhoto} className="photoButton" type="button"> Upload Logo</button>
@@ -47,7 +47,7 @@ module.exports = React.createClass({
 					    				<option value="4">Artisan Food</option>
 					    				<option value="5">Miscellany Goods</option>
 										</select>
-									<span className="errors">{this.state.errors.typescroll}</span>
+									<span className="errors">{this.state.errors.vendorType}</span>
 									</div>
 								<input type="text" ref="vendorEmail" className="vendorEmail" placeholder="Email"/>
 										<span className="errors">{this.state.errors.vendorEmail}</span>
@@ -60,7 +60,7 @@ module.exports = React.createClass({
 					    				<option value="5">Mueller TFM</option>
 					    				<option value="6">All of the above</option>
 										</select>
-									<span className="errors">{this.state.errors.locationScroll}</span>
+									<span className="errors">{this.state.errors.vendorLocation}</span>
 									</div>
   							</div>
   							<div className="row">
@@ -91,7 +91,7 @@ module.exports = React.createClass({
 				// self.setState({
 				// 	avatarUrl: InkBlobs[0].url
 				// });
-				self.setState({picture:response[0].url})
+				self.setState({vendorPhoto:response[0].url})
 			}
 		);
 
@@ -111,14 +111,14 @@ module.exports = React.createClass({
 			vendorLocation: this.refs.vendorLocation.getDOMNode().value,
 			vendorType: this.refs.vendorType.getDOMNode().value,
 			vendorDescription: this.refs.vendorDescription.getDOMNode().value,
-			
-
+			vendorPhoto: this.state.vendorPhoto,
 
 		});
+		 	console.log(user)
 
 
 		if(!user.get('vendorName') || !user.get('password') || !user.get('username') || !user.get('vendorPasswordConfirm')
-		|| !user.get('vendorContact')|| !user.get('vendorLocation')|| !user.get('vendorDescription')|| !user.get('vendorType')){
+		|| !user.get('vendorContact')|| user.get('vendorLocation')=== '1'|| !user.get('vendorDescription')|| user.get('vendorType')==='1'){
 
 			if(!user.get('vendorName')){
 				err.vendorName = 'You must enter a vendor name';
@@ -138,12 +138,13 @@ module.exports = React.createClass({
 			if(!user.get('vendorDescription')){
 				err.vendorDescription = 'You must enter a vendor description';
 			}
-			if(!user.get('vendorLocation === 1')){
+			if(user.get('vendorLocation') === '1'){
 				err.vendorLocation = 'You must choose your location';
 			}
-			if(!user.get('vendorType === 1')){
-				err.vendorLocation = 'You must choose your a business type';
+			if(user.get('vendorType') === '1'){
+				err.vendorType = 'You must choose your a business type';
 			}
+
 
 			this.setState({errors:err});
 
