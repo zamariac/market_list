@@ -23,7 +23,7 @@ module.exports = React.createClass({
 				<div className="container">
 					<div className="row">
   							<div className="col-sm-4"> 
-								<div ref="vendorPhoto"className="vendorPhoto"><img src={this.state.vendorPhoto}/></div>
+								<div ref="vendorPhoto" className="vendorPhoto"><img src={this.state.vendorPhoto}/></div>
 								<span className="errors">{this.state.errors.vendorPhoto}</span>
 
 								<button onClick={this.pickPhoto} className="photoButton" type="button"> Upload Logo</button>
@@ -42,7 +42,7 @@ module.exports = React.createClass({
   									<div className="scroll"> Business
 										<select ref="vendorType">
 										<option value="1">Type</option>
-					    				<option value="2">Vegetables</option>
+					    				<option value="2">Fruit & Vegetables</option>
 					    				<option value="3">Meat Eggs & Dairy</option>
 					    				<option value="4">Artisan Food</option>
 					    				<option value="5">Miscellany Goods</option>
@@ -82,7 +82,8 @@ module.exports = React.createClass({
 
 		console.log('hello')
 		filepicker.pickAndStore(
-			{
+			{	
+				cropRatio: 1,
 				mimetype:"image/*"
 			},
 			{},
@@ -102,7 +103,9 @@ module.exports = React.createClass({
 
 		var self = this;
 		var err = {};
-		var user = new userModel({
+	
+		var user = this.props.user;
+		user.set({
 			vendorName: this.refs.vendorName.getDOMNode().value,
 			username: this.refs.vendorEmail.getDOMNode().value,
 			password: this.refs.vendorPassword.getDOMNode().value,

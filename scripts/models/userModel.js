@@ -16,6 +16,7 @@ module.exports = Backbone.Model.extend({
 		vendorName:null,
 		vendorContact:null,
 		vendorLocation: null,
+		vendorDescription: null,
 		vendorType: null,
 		vendorPhoto: null,
 	},
@@ -25,6 +26,9 @@ module.exports = Backbone.Model.extend({
 	isUser: true,
 	save: function(key, val, options){
 		this.unset('confirmPassword');
+		if (this.id){
+			this.unset('password');
+		}
 		return Backbone.Model.prototype.save.call(this, key, val, options);
 	}
 });

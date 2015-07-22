@@ -8,11 +8,13 @@ var SignUp = require('./components/signUpComponent');
 var VendorProfile = require('./components/vendorProfileComponent');
 var LogIn= require('./components/logInComponent');
 var FindMarket= require('./components/findMarketComponent');
+var EditProfile= require('./components/editProfileComponent');
 
 var userModel = require('./models/userModel');
 
 
 var user = new userModel();
+user.me();
 
 var App = Backbone.Router.extend({
 	routes:{
@@ -22,6 +24,7 @@ var App = Backbone.Router.extend({
 		'vendorprofile':'vendorprofile',
 		'login':'login',
 		'findmarket':'findmarket',
+		'editprofile':'editprofile'
 	},
 
 
@@ -45,6 +48,10 @@ var App = Backbone.Router.extend({
 	findmarket: function(){
 		React.render(<FindMarket/>,document.querySelector('#container'));
 	},
+
+	editprofile: function(){
+		React.render(<EditProfile router={app} user={user}/>,document.querySelector('#container'));
+	}
 
 
 });

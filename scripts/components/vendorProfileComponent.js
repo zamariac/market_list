@@ -25,18 +25,12 @@ module.exports = React.createClass({
   								<label htmlFor="vendorNameProfile" className="col-sm-2 control-label" placeholder="Vendor Name"></label>
   							</div>
 		    				<div className="col-sm-10">
-		      					<input type="vendorNameProfile" className="form-control" ref=""/>
-		    				</div>
-		    				<div>
-  								<label htmlFor="vendorDescription" className="col-sm-2 control-label">Vendor Description</label>
-  							</div>
-		    				<div className="col-sm-10">
-		      					<input type="vendorDescription" className="form-control" ref=""/>
-		    				</div>				
+		      					<input type="vendorNameProfile" className="form-control" defaultValue={this.props.user.get('vendorName')}/>
+		    				</div>			
   					</div>
   					
   					<div className="row">
-  						<textarea ref="vendorDescription" className="vendorDescription" placeholder="Business description"></textarea>				
+  						<textarea ref="vendorDescription" className="vendorDescription" defaultValue={this.props.user.get('vendorName')}></textarea>				
 					</div>
 				</div>
 				<div className="bottomline"></div>
