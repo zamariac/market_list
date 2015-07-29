@@ -35618,6 +35618,22 @@ module.exports = require('./lib/React');
 },{}],167:[function(require,module,exports){
 'use strict';
 
+var Backbone = require('backparse')({
+	appId: 'rBGHrQgZziXcV3fjqpuzIU3ap9x4obKgHxUtDXw4',
+	apiKey: 'rzM8F0vM2en7pPzadhD0H0FA3JsZaQAlKItfgbM3',
+	apiVersion: 1
+
+});
+var userModel = require('../models/userModel');
+
+module.exports = Backbone.Collection.extend({
+	model: userModel,
+	parseClassName: '_User'
+});
+
+},{"../models/userModel":176,"backparse":3}],168:[function(require,module,exports){
+'use strict';
+
 var React = require('react');
 var _ = require('backbone/node_modules/underscore');
 var Backbone = require('backparse');
@@ -35852,15 +35868,15 @@ module.exports = React.createClass({
 
 		// });
 
-		// 	this.props.user.set({
-		// 		// vendorName: this.refs.vendorName.getDOMNode().value,
-		// 		// username: this.refs.vendorEmail.getDOMNode().value,
-		// 		// vendorContact: this.refs.vendorContact.getDOMNode().value,
-		// 		// vendorLocation: this.refs.vendorLocation.getDOMNode().value,
-		// 		// vendorType: this.refs.vendorType.getDOMNode().value,
-		// 		// vendorDescription: this.refs.vendorDescription.getDOMNode().value,
-		// 		// vendorPhoto: this.state.vendorPhoto,
-		// 	});
+		this.props.user.set({
+			vendorName: this.refs.vendorName.getDOMNode().value,
+			username: this.refs.vendorEmail.getDOMNode().value,
+			vendorContact: this.refs.vendorContact.getDOMNode().value,
+			vendorLocation: this.refs.vendorLocation.getDOMNode().value,
+			vendorType: this.refs.vendorType.getDOMNode().value,
+			vendorDescription: this.refs.vendorDescription.getDOMNode().value,
+			vendorPhoto: this.state.vendorPhoto
+		});
 
 		if (!this.props.user.get('vendorName') || !this.props.user.get('username') || !this.props.user.get('vendorContact') || this.props.user.get('vendorLocation') === '1' || !this.props.user.get('vendorDescription') || this.props.user.get('vendorType') === '1') {
 
@@ -35907,7 +35923,7 @@ module.exports = React.createClass({
 
 // self.props.router.navigate('vendorprofile', {trigger: true});
 
-},{"../models/userModel":174,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],168:[function(require,module,exports){
+},{"../models/userModel":176,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],169:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -35949,7 +35965,7 @@ module.exports = React.createClass({
 						{ className: 'col-sm-6' },
 						React.createElement(
 							'a',
-							{ href: '#hope', className: 'hope' },
+							{ href: '#foundmarket/hope', className: 'hope' },
 							React.createElement('img', { className: 'img-responsive', src: 'http://www.scrumptiouschef.com/food/wp-content/uploads/2014/03/hope.jpg' }),
 							React.createElement(
 								'div',
@@ -35963,7 +35979,7 @@ module.exports = React.createClass({
 						{ className: 'col-sm-6' },
 						React.createElement(
 							'a',
-							{ href: '#mueller', className: 'mueller' },
+							{ href: '#foundmarket/mueller', className: 'mueller' },
 							React.createElement('img', { className: 'img-responsive', src: 'http://tours.tourfactory.com/tours/media/scene/big2/00/19/23/32/19233219.jpg' }),
 							React.createElement(
 								'div',
@@ -35981,7 +35997,7 @@ module.exports = React.createClass({
 						{ className: 'col-sm-6' },
 						React.createElement(
 							'a',
-							{ href: '#domain', className: 'domain' },
+							{ href: '#foundmarket/domain', className: 'domain' },
 							React.createElement('img', { className: 'img-responsive', src: 'http://texasfarmersmarket.org/wp-content/uploads/2015/04/TFMatDomain_location-615x346.jpg' }),
 							React.createElement(
 								'div',
@@ -35995,7 +36011,7 @@ module.exports = React.createClass({
 						{ className: 'col-sm-6' },
 						React.createElement(
 							'a',
-							{ href: '#lakeline', className: 'lakeline' },
+							{ href: '#foundmarket/lakeline', className: 'lakeline' },
 							React.createElement('img', { className: 'img-responsive', src: 'http://texasfarmersmarket.org/wp-content/uploads/2012/04/cedarparkmkt_rooftop_01-980x654.jpg' }),
 							React.createElement(
 								'div',
@@ -36016,7 +36032,61 @@ module.exports = React.createClass({
 
 });
 
-},{"../models/userModel":174,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],169:[function(require,module,exports){
+},{"../models/userModel":176,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],170:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var foundMarket = require('../collections/userCollection');
+
+module.exports = React.createClass({
+	displayName: 'exports',
+
+	componentWillMount: function componentWillMount() {
+		var self = this;
+		this.props.vendors.on('sync', function () {
+			self.forceUpdate();
+		});
+	},
+
+	render: function render() {
+		var postMarketLocation = this.props.vendors.map(function (userModel) {
+			return React.createElement(
+				'div',
+				{ key: userModel.cid },
+				React.createElement(
+					'h3',
+					null,
+					userModel.get('title')
+				),
+				React.createElement(
+					'p',
+					null,
+					userModel.get('body')
+				),
+				React.createElement(
+					'p',
+					null,
+					React.createElement(
+						'a',
+						{ href: '#foundMarket/' + userModel.get('vendorLocation') },
+						userModel.get('vendorLocation')
+					)
+				)
+			);
+		});
+		return React.createElement(
+			'div',
+			{ className: 'row' },
+			React.createElement(
+				'div',
+				{ className: 'col-sm-6 col-sm-offset-3' },
+				postMarketLocation
+			)
+		);
+	}
+});
+
+},{"../collections/userCollection":167,"react":165}],171:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -36148,7 +36218,7 @@ module.exports = React.createClass({
 
 });
 
-},{"bootstrap/js/carousel.js":7,"jQuery":9,"react":165}],170:[function(require,module,exports){
+},{"bootstrap/js/carousel.js":7,"jQuery":9,"react":165}],172:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -36305,7 +36375,7 @@ module.exports = React.createClass({
 
 });
 
-},{"../models/userModel":174,"backbone/node_modules/underscore":2,"backparse":3,"react":165,"validator":166}],171:[function(require,module,exports){
+},{"../models/userModel":176,"backbone/node_modules/underscore":2,"backparse":3,"react":165,"validator":166}],173:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -36456,27 +36526,27 @@ module.exports = React.createClass({
 								),
 								React.createElement(
 									'option',
-									{ value: '2' },
+									{ value: 'hope' },
 									'Hope FM'
 								),
 								React.createElement(
 									'option',
-									{ value: '3' },
+									{ value: 'lakeline' },
 									'Lakeline TFM'
 								),
 								React.createElement(
 									'option',
-									{ value: '4' },
+									{ value: 'domain' },
 									'Domain TFM'
 								),
 								React.createElement(
 									'option',
-									{ value: '5' },
+									{ value: 'mueller' },
 									'Mueller TFM'
 								),
 								React.createElement(
 									'option',
-									{ value: '6' },
+									{ value: 'all' },
 									'All of the above'
 								)
 							),
@@ -36602,7 +36672,7 @@ module.exports = React.createClass({
 
 });
 
-},{"../models/userModel":174,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],172:[function(require,module,exports){
+},{"../models/userModel":176,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],174:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -36677,7 +36747,7 @@ module.exports = React.createClass({
 
 });
 
-},{"../models/userModel":174,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],173:[function(require,module,exports){
+},{"../models/userModel":176,"backbone/node_modules/underscore":2,"backparse":3,"react":165}],175:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -36691,11 +36761,21 @@ var VendorProfile = require('./components/vendorProfileComponent');
 var LogIn = require('./components/logInComponent');
 var FindMarket = require('./components/findMarketComponent');
 var EditProfile = require('./components/editProfileComponent');
+var FoundMarket = require('./components/foundMarketComponent');
 
 var userModel = require('./models/userModel');
+var userCollection = require('./collections/userCollection');
 
 var user = new userModel();
 user.me();
+
+var postMarketLocation = React.createElement(FoundMarket, { vendors: vendors });
+var vendors = new userCollection();
+
+// vendors.on('findLocation', function() {
+// 	console.log('findLocation event');
+// 	React.render(postMarketLocation, '#container');
+// });
 
 var App = Backbone.Router.extend({
 	routes: {
@@ -36705,7 +36785,9 @@ var App = Backbone.Router.extend({
 		'vendorprofile': 'vendorprofile',
 		'login': 'login',
 		'findmarket': 'findmarket',
+		'foundmarket/:vendorLocation': 'foundmarket',
 		'editprofile': 'editprofile'
+
 	},
 
 	home: function home() {
@@ -36728,6 +36810,20 @@ var App = Backbone.Router.extend({
 		React.render(React.createElement(FindMarket, null), document.querySelector('#container'));
 	},
 
+	foundmarket: function foundmarket(vendorLocation) {
+		console.log('foundmarket', vendorLocation);
+		vendors.fetch({
+			query: {
+				vendorLocation: vendorLocation
+
+			},
+			success: function success() {
+				console.log(vendors);
+			}
+		});
+		React.render(React.createElement(FoundMarket, { vendors: vendors, router: app, user: user }), document.querySelector('#container'));
+	},
+
 	editprofile: function editprofile() {
 		React.render(React.createElement(EditProfile, { router: app, user: user }), document.querySelector('#container'));
 	}
@@ -36738,7 +36834,7 @@ var app = new App();
 Backbone.history.start();
 // app.navigate('home')
 
-},{"./components/editProfileComponent":167,"./components/findMarketComponent":168,"./components/homePageComponent":169,"./components/logInComponent":170,"./components/signUpComponent":171,"./components/vendorProfileComponent":172,"./models/userModel":174,"backbone":1,"react":165}],174:[function(require,module,exports){
+},{"./collections/userCollection":167,"./components/editProfileComponent":168,"./components/findMarketComponent":169,"./components/foundMarketComponent":170,"./components/homePageComponent":171,"./components/logInComponent":172,"./components/signUpComponent":173,"./components/vendorProfileComponent":174,"./models/userModel":176,"backbone":1,"react":165}],176:[function(require,module,exports){
 'use strict';
 
 var Backbone = require('backparse')({
@@ -36776,7 +36872,7 @@ module.exports = Backbone.Model.extend({
 	}
 });
 
-},{"backparse":3,"jquery":10,"validator":166}]},{},[173])
+},{"backparse":3,"jquery":10,"validator":166}]},{},[175])
 
 
 //# sourceMappingURL=all.js.map

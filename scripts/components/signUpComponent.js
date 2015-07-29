@@ -54,11 +54,11 @@ module.exports = React.createClass({
 								<div className="scroll"> Market
 										<select ref="vendorLocation"> 
 										<option value="1">Location</option>
-					    				<option value="2">Hope FM</option>
-					    				<option value="3">Lakeline TFM</option>
-					    				<option value="4">Domain TFM</option>
-					    				<option value="5">Mueller TFM</option>
-					    				<option value="6">All of the above</option>
+					    				<option value="hope">Hope FM</option>
+					    				<option value="lakeline">Lakeline TFM</option>
+					    				<option value="domain">Domain TFM</option>
+					    				<option value="mueller">Mueller TFM</option>
+					    				<option value="all">All of the above</option>
 										</select>
 									<span className="errors">{this.state.errors.vendorLocation}</span>
 									</div>

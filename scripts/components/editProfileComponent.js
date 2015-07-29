@@ -139,15 +139,15 @@ module.exports = React.createClass({
 
 		// });
 
-	// 	this.props.user.set({
-	// 		// vendorName: this.refs.vendorName.getDOMNode().value,
-	// 		// username: this.refs.vendorEmail.getDOMNode().value,
-	// 		// vendorContact: this.refs.vendorContact.getDOMNode().value, 
-	// 		// vendorLocation: this.refs.vendorLocation.getDOMNode().value,
-	// 		// vendorType: this.refs.vendorType.getDOMNode().value,
-	// 		// vendorDescription: this.refs.vendorDescription.getDOMNode().value,
-	// 		// vendorPhoto: this.state.vendorPhoto,
-	// 	});
+		this.props.user.set({
+			vendorName: this.refs.vendorName.getDOMNode().value,
+			username: this.refs.vendorEmail.getDOMNode().value,
+			vendorContact: this.refs.vendorContact.getDOMNode().value, 
+			vendorLocation: this.refs.vendorLocation.getDOMNode().value,
+			vendorType: this.refs.vendorType.getDOMNode().value,
+			vendorDescription: this.refs.vendorDescription.getDOMNode().value,
+			vendorPhoto: this.state.vendorPhoto,
+		});
 
 	if(! this.props.user.get('vendorName')|| !this.props.user.get('username')|| !this.props.user.get('vendorContact')
 	|| this.props.user.get('vendorLocation')=== '1'|| !this.props.user.get('vendorDescription')|| this.props.user.get('vendorType')==='1'){
