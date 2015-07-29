@@ -13,7 +13,9 @@ Vendors will be able to easily input their weekends stock, price and availabilit
 
 #Wireframes#
 
-[Visit GitHub!](https://github.com/zamariac/market_list/blob/master/MarketList.pdf).
+[Visit GitHub!](https://www.github.com/zamariac/market_list/blob/master/MarketList.pdf).
+
+
 
 
 
