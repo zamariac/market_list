@@ -35676,9 +35676,9 @@ module.exports = React.createClass({
 				),
 				React.createElement('div', { className: 'marginTop' }),
 				React.createElement(
-					'div',
-					{ className: 'homehead' },
-					' Market List '
+					'a',
+					{ href: '#home', className: 'homeheadhome' },
+					' MARKET LIST '
 				)
 			),
 			React.createElement(
@@ -35776,27 +35776,27 @@ module.exports = React.createClass({
 								),
 								React.createElement(
 									'option',
-									{ value: '2' },
+									{ value: 'hope' },
 									'Hope FM'
 								),
 								React.createElement(
 									'option',
-									{ value: '3' },
+									{ value: 'lakeline' },
 									'Lakeline TFM'
 								),
 								React.createElement(
 									'option',
-									{ value: '4' },
+									{ value: 'domain' },
 									'Domain TFM'
 								),
 								React.createElement(
 									'option',
-									{ value: '5' },
+									{ value: 'mueller' },
 									'Mueller TFM'
 								),
 								React.createElement(
 									'option',
-									{ value: '6' },
+									{ value: 'all' },
 									'All of the above'
 								)
 							),
@@ -35947,12 +35947,12 @@ module.exports = React.createClass({
 					{ href: '#home', className: 'homeButton' },
 					' Home '
 				),
-				React.createElement('div', { className: 'marginTop' }),
 				React.createElement(
-					'div',
-					{ className: 'homehead' },
-					' Market List '
-				)
+					'a',
+					{ href: '#home', className: 'homeheadhome' },
+					' MARKET LIST '
+				),
+				React.createElement('div', { className: 'marginTop' })
 			),
 			React.createElement(
 				'div',
@@ -35966,7 +35966,7 @@ module.exports = React.createClass({
 						React.createElement(
 							'a',
 							{ href: '#foundmarket/hope', className: 'hope' },
-							React.createElement('img', { className: 'img-responsive', src: 'http://www.scrumptiouschef.com/food/wp-content/uploads/2014/03/hope.jpg' }),
+							React.createElement('img', { className: 'img-responsive', src: 'http://www.hungersauce.com/wp-content/uploads/2013/03/Saltillo.jpg' }),
 							React.createElement(
 								'div',
 								{ className: 'title' },
@@ -36056,7 +36056,7 @@ module.exports = React.createClass({
 				React.createElement(
 					'h3',
 					null,
-					userModel.get('title')
+					userModel.get('vendorName')
 				),
 				React.createElement(
 					'p',
@@ -36077,6 +36077,11 @@ module.exports = React.createClass({
 		return React.createElement(
 			'div',
 			{ className: 'row' },
+			React.createElement(
+				'a',
+				{ href: '#home', className: 'homeheadhome' },
+				' MARKET LIST '
+			),
 			React.createElement(
 				'div',
 				{ className: 'col-sm-6 col-sm-offset-3' },
@@ -36113,9 +36118,14 @@ module.exports = React.createClass({
 					'div',
 					{ className: 'headerwraphome' },
 					React.createElement(
+						'a',
+						{ href: '#home', className: 'homeheadhome' },
+						' MARKET LIST '
+					),
+					React.createElement(
 						'div',
-						{ className: 'homeheadhome' },
-						' Market List '
+						{ className: 'topLine' },
+						' _____ '
 					)
 				),
 				React.createElement(
@@ -36134,44 +36144,57 @@ module.exports = React.createClass({
 						React.createElement(
 							'div',
 							{ className: 'item active' },
-							React.createElement('img', { src: 'http://www.toptomatofoods.com/wp-content/uploads/2011/06/IMG_2531.jpg', alt: 'produce' }),
+							React.createElement('img', { src: 'styles/images/wirebasket.jpeg', alt: 'produce' }),
 							React.createElement(
 								'div',
 								{ className: 'carousel-caption' },
 								React.createElement(
 									'div',
 									{ className: 'intro' },
-									' Find what you\'re looking for'
+									' FIND WHAT YOU\'RE LOOKING FOR '
+								),
+								React.createElement(
+									'div',
+									{ className: 'introTwo' },
+									' Plan your meals and reduce waste by finding exactly what you need. '
 								)
 							)
 						),
 						React.createElement(
 							'div',
 							{ className: 'item' },
-							React.createElement('img', { src: 'https://torierynning.files.wordpress.com/2014/03/ballard-farmers-market-2.jpg', alt: 'rootveg' }),
+							React.createElement('img', { src: 'styles/images/cherries.jpeg', alt: 'rootveg' }),
 							React.createElement(
 								'div',
 								{ className: 'carousel-caption' },
 								React.createElement(
 									'div',
 									{ className: 'intro' },
-									' Enjoy the season\'s freshest'
+									' ENJOY THE SEASON\'S FRESHEST '
+								),
+								React.createElement(
+									'div',
+									{ className: 'introTwo' },
+									' Stay on top of what\'s in season right now and at the market. '
 								)
 							)
 						),
 						React.createElement(
 							'div',
 							{ className: 'item' },
-							React.createElement('img', { src: 'https://gardenwarriorsgoodseeds.files.wordpress.com/2015/01/honeybottlesfarmersmarket_ab.jpg', alt: 'honey' }),
+							React.createElement('img', { src: 'styles/images/grapes.jpeg', alt: 'honey' }),
 							React.createElement(
 								'div',
 								{ className: 'carousel-caption' },
 								React.createElement(
 									'div',
 									{ className: 'intro' },
-									' Support',
-									React.createElement('br', null),
-									' local communities '
+									' SUPPORT LOCAL COMMUNITIES '
+								),
+								React.createElement(
+									'div',
+									{ className: 'introTwo' },
+									' Make an impact on sustainability &  support your local farms and artisans. '
 								)
 							)
 						)
@@ -36200,18 +36223,91 @@ module.exports = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ className: 'bottomlinehome' },
-				' '
+				{ className: 'buttonDiv' },
+				React.createElement(
+					'a',
+					{ href: '#findmarket', className: 'findMarketButton' },
+					' FIND A MARKET '
+				),
+				React.createElement(
+					'a',
+					{ href: '#signup', className: 'signUpButton' },
+					' VENDOR SIGN UP '
+				)
 			),
 			React.createElement(
-				'a',
-				{ href: '#findmarket', className: 'findMarketButton' },
-				' Find a market '
+				'div',
+				{ className: 'welcome' },
+				React.createElement(
+					'div',
+					{ className: 'introBlurb' },
+					' WELCOME TO MARKET LIST '
+				),
+				React.createElement(
+					'div',
+					{ className: 'introBlurbTwo' },
+					' We are happy to be here to help make the best of your farmer\'s market experience. Whether you\'re a vendor or a consumer, Market list helps you plan ahead. Vendors can post their weekend\'s products available so consumers can plan and food waste is reduced. We support your lifestyle, our community and want to make your grocery shopping trip a bit hassle free. '
+				)
 			),
 			React.createElement(
-				'a',
-				{ href: '#signup', className: 'signUpButton' },
-				' Vendor sign up '
+				'div',
+				{ className: 'bottomMargin' },
+				React.createElement(
+					'div',
+					{ className: 'about' },
+					' ABOUT',
+					React.createElement(
+						'div',
+						{ className: 'story' },
+						' Our Story '
+					),
+					React.createElement(
+						'div',
+						{ className: 'press' },
+						' Press '
+					),
+					React.createElement(
+						'div',
+						{ className: 'terms' },
+						' Privacy & Terms'
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'help' },
+					' HELP & CONTACT',
+					React.createElement(
+						'div',
+						{ className: 'questions' },
+						' FAQ\'S '
+					),
+					React.createElement(
+						'div',
+						{ className: 'email' },
+						' Email Us '
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'getApp' },
+					' GET THE APP',
+					React.createElement(
+						'div',
+						{ className: 'appInfo' },
+						' Iphone & Android ',
+						React.createElement(
+							'br',
+							null,
+							' '
+						),
+						' Coming Soon! '
+					)
+				)
+			),
+			React.createElement(
+				'div',
+				{ className: 'ironyard' },
+				' Created by Maria Zamora for Iron Yard Front End Developer program '
 			)
 		);
 	}
@@ -36260,67 +36356,71 @@ module.exports = React.createClass({
 						' Home '
 					),
 					React.createElement(
-						'div',
-						{ className: 'homehead' },
-						' Market List '
+						'a',
+						{ href: '#home', className: 'homeheadhome' },
+						' MARKET LIST '
 					)
 				)
 			),
 			React.createElement(
 				'div',
-				{ className: 'loginBlock' },
-				genericError,
+				{ className: 'Block' },
 				React.createElement(
-					'form',
-					{ className: 'form-horizontal', onSubmit: this.onLogin },
+					'div',
+					{ className: 'loginBlock' },
+					genericError,
 					React.createElement(
-						'div',
-						{ className: 'form-group' },
+						'form',
+						{ className: 'form-horizontal', onSubmit: this.onLogin },
 						React.createElement(
-							'label',
-							{ htmlFor: 'inputEmail3', className: 'col-sm-2 control-label' },
-							'Email'
+							'div',
+							{ className: 'form-group' },
+							React.createElement(
+								'label',
+								{ htmlFor: 'inputEmail3', className: 'col-sm-2 control-label' },
+								'Email'
+							),
+							React.createElement(
+								'div',
+								{ className: 'col-sm-10' },
+								React.createElement('input', { type: 'email', className: 'form-control inputEmail3', ref: 'loginEmail', placeholder: 'Email' }),
+								React.createElement(
+									'div',
+									{ className: 'errors' },
+									this.state.errors.loginEmail
+								)
+							)
 						),
 						React.createElement(
 							'div',
-							{ className: 'col-sm-10' },
-							React.createElement('input', { type: 'email', className: 'form-control inputEmail3', ref: 'loginEmail', placeholder: 'Email' }),
+							{ className: 'form-group' },
+							React.createElement(
+								'label',
+								{ htmlFor: 'inputPassword3', className: 'col-sm-2 control-label' },
+								'Password'
+							),
 							React.createElement(
 								'div',
-								{ className: 'errors' },
-								this.state.errors.loginEmail
+								{ className: 'col-sm-10' },
+								React.createElement('input', { type: 'password', className: 'form-control inputPassword3', ref: 'loginPassword', placeholder: 'Password' }),
+								React.createElement(
+									'div',
+									{ className: 'errors' },
+									this.state.errors.loginPassword
+								)
 							)
-						)
-					),
-					React.createElement(
-						'div',
-						{ className: 'form-group' },
-						React.createElement(
-							'label',
-							{ htmlFor: 'inputPassword3', className: 'col-sm-2 control-label' },
-							'Password'
 						),
 						React.createElement(
 							'div',
-							{ className: 'col-sm-10' },
-							React.createElement('input', { type: 'password', className: 'form-control inputPassword3', ref: 'loginPassword', placeholder: 'Password' }),
+							{ className: 'form-group' },
 							React.createElement(
 								'div',
-								{ className: 'errors' },
-								this.state.errors.loginPassword
-							)
-						)
-					),
-					React.createElement(
-						'div',
-						{ className: 'form-group' },
-						React.createElement(
-							'div',
-							{ className: 'col-sm-offset-2 col-sm-10' },
-							React.createElement(
-								'button',
-								{ type: 'submit', className: 'btn btn-default' },
-								'Sign in'
+								{ className: 'col-sm-offset-2 col-sm-10' },
+								React.createElement(
+									'button',
+									{ type: 'submit', className: 'btn btn-default' },
+									'Sign in'
+								)
 							)
 						)
 					)
@@ -36406,9 +36506,9 @@ module.exports = React.createClass({
 				),
 				React.createElement('div', { className: 'marginTop' }),
 				React.createElement(
-					'div',
-					{ className: 'homehead' },
-					' Market List '
+					'a',
+					{ href: '#home', className: 'homeheadhome' },
+					' MARKET LIST '
 				)
 			),
 			React.createElement(
@@ -36610,6 +36710,7 @@ module.exports = React.createClass({
 		var err = {};
 
 		var user = this.props.user;
+		user.logout();
 		user.set({
 			vendorName: this.refs.vendorName.getDOMNode().value,
 			username: this.refs.vendorEmail.getDOMNode().value,
@@ -36704,9 +36805,9 @@ module.exports = React.createClass({
 				),
 				React.createElement('div', { className: 'marginTop' }),
 				React.createElement(
-					'div',
-					{ className: 'homehead' },
-					' Market List '
+					'a',
+					{ href: '#home', className: 'homeheadhome' },
+					' MARKET LIST '
 				)
 			),
 			React.createElement(

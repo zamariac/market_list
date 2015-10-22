@@ -22,10 +22,11 @@ module.exports = React.createClass({
 				<div>
 						<div className="headerwrap"> 
 							<a href="#home" className="homeButton"> Home </a>
-							<div className="homehead"> Market List </div> 
+							<a href="#home" className="homeheadhome"> MARKET LIST </a> 
 
 						</div>
 				</div>
+				<div className="Block">
 				<div className="loginBlock">
 					{genericError}
 				<form className="form-horizontal" onSubmit={this.onLogin}>
@@ -51,6 +52,7 @@ module.exports = React.createClass({
 					    </div>
 					  </div>
 				</form>
+				</div>
 				</div>
 				<div className="bottomline"></div>
 			</div>

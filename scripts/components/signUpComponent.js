@@ -18,7 +18,7 @@ module.exports = React.createClass({
 				<div className="headerwrap"> 
 					<a href="#home" className="homeButton"> Home </a>
 					<div className="marginTop"></div>
-					<div className="homehead"> Market List </div> 
+					<a href="#home" className="homeheadhome"> MARKET LIST </a> 
 				</div>
 				<div className="container">
 					<div className="row">
@@ -105,6 +105,7 @@ module.exports = React.createClass({
 		var err = {};
 	
 		var user = this.props.user;
+		user.logout();
 		user.set({
 			vendorName: this.refs.vendorName.getDOMNode().value,
 			username: this.refs.vendorEmail.getDOMNode().value,

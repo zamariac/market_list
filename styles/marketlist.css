@@ -3,101 +3,103 @@
 }
 
 .headerwraphome{
-	height: 75px;
-	border-bottom: 5px solid red;
+	height: 65px;
 	background-color: white;
+	padding-top: 24px;
+
 
 }
 
 .headerwrap{
 	height: 75px;
-	border-bottom: 5px solid red;
-	text-shadow: 1px 0 black;
-	background-image: url("http://violetmeyer.com/wp-content/uploads/2014/09/Farmers-market-bounty-tomatoes.jpg");
-	background-size: cover;
-	opacity: .7;
+
 }
+
+/*.topLine{
+	color: red;
+	text-align: center;
+	font-size: 30px;
+	margin-top: -32px;
+	margin-left: 93px;
+}*/
 
 .logInButton {
 	float:right;
 	color:red;
-	font-family: arial;
+	font-family: helvetica;
 	font-size: 15px;
 
-	margin-top: 25px;
-	margin-right: 25px;
+	margin-top: 35px;
+	margin-right: 8px;
 
-}
-
-.homehead{
-	color: red;
-	font-family: arial;
-	font-size: 35px;
-	position: relative;
-	margin-left: 30px;
-	top:30px;
-	width: 184px;
-	padding: 0 6px;
-	overflow: hidden;
-	text-shadow: 3px 0 black;
 }
 
 .homeheadhome{
 	color: red;
-	font-family: arial;
-	font-size: 35px;
-	position: relative;
-	margin-left: 30px;
-	top:30px;
-	width: 184px;
-	padding: 0 6px;
-	overflow: hidden;
-	text-shadow: 2px 0 gray;
-}
-
-.item{
- 	 width: auto;
-  	 height: 300px;
-     max-height: 300px;
+	font-family: helvetica;
+	font-size: 30px;
+	font-weight: bold;
+	margin-left: 6px;
+	
 }
 
 .intro{
 
 	font-family: helvetica;
-	font-size: 60px;
+	font-size: 26px;
+	font-weight: bold;
 	color: white; 
-	text-shadow: 4px 0 gray;
-	text-align: left; 
-	line-height: 75px;
-	      
+	text-shadow: 2px 0 black;
+	text-align: center;  
+	    
 }
 
-.bottomline{
-	border-top: 5px solid red;
-	background-image: url("http://violetmeyer.com/wp-content/uploads/2014/09/Farmers-market-bounty-tomatoes.jpg");
-	background-size: cover;
-	opacity: .7;
-	height: 500px;
+.introTwo{
+	font-family: helvetica;
+	font-size: 20px;
+	color: white;
+	text-align: center; 
+	padding-bottom: 15px;
+
 }
 
-.bottomlinehome{
-	border-top: 5px solid red;
+.buttonDiv{
+	height: 100px;
+	width: auto;
+	padding-top: 20px;
+
 }
-
-
 
 .findMarketButton{
-	margin-left:90px;
-	font-family: arial;
-	font-size: 28px;
+	margin-left:145px;
+	height: 20px;
+	width: 30px;
+
+	font-family: helvetica;
+	font-size: 20px;
 	color: red;
+	font-weight: bold;
+
 }
 
-.signUpButton{
-	margin-left:50px;
-	font-family: arial;
-	font-size: 28px;
+.homehead{
 	color: red;
+	font-family: helvetica;
+	font-size: 19px;
+	font-weight: bold;
+	margin-left: 186px;
+	
+}
+
+
+.signUpButton{
+	margin-left:25px;
+	height: 20px;
+	width: 30px;
+	font-family: helvetica;
+	font-size: 20px;
+	color: red;
+	font-weight: bold;
 }
 
 .vendorPhoto{
@@ -108,8 +110,80 @@
 	margin-top: 20px;
 }
 
-img{
-	width: 100%;
+.welcome{
+	height: 450px;
+	width: auto;
+	background-color: white;
+	border: #ECECEC solid 65px;
+
+	
+}
+
+.introBlurb{
+	font-weight: bold;
+	padding: 20px;
+	font-family: helvetica;
+	font-size: 30px;
+	text-align: center;
+	margin-top: 5px;
+
+}
+
+.introBlurbTwo{
+	font-family: helvetica;
+	font-size: 18px;
+	color: #737373;
+	text-align: left;
+	margin-left: 34px;
+	margin-top: -1px;
+
+}
+
+.item {
+  width: 100%;
+  max-height: 435px;
+}
+
+
+.footer{
+	position: relative;
+  	margin-top: -150px; /* negative value of footer height */
+  	height: 150px;
+  	clear:both;
+  	padding-top:50px;
+}
+
+.ironyard {
+ font-family: helvetica;
+ font-size: 9px;
+ text-align: center;
+}
+
+.about{
+
+	display:block;
+	height:150px;
+	color: #737373;
+	border-top: #ECECEC 1px solid;
+	text-align: center;
+	padding-top: 20px;
+}
+.help{
+	display:block;
+	height:150px;
+	color: #737373;
+	border-top: #ECECEC 1px solid;
+	text-align: center;
+	padding-top: 20px;
+
+}
+.getApp{
+	display: block;
+	height:150px;
+	color: #737373;
+	border-top: #ECECEC 1px solid;
+	text-align: center;
+	padding-top: 20px;
 }
 
 .photoButton{
@@ -176,7 +250,7 @@ img{
 .homeButton {
 	float:right;
 	color:red;
-	font-family: arial;
+	font-family: helvetica;
 	font-size: 15px;
 
 	margin-top: 25px;
@@ -186,46 +260,42 @@ img{
 .logOutButton {
 	float:right;
 	color:red;
-	font-family: arial;
+	font-family: helvetica;
 	font-size: 15px;
 
 	margin-top: 25px;
 	margin-right: 25px;
+
 }
+
 
 .loginBlock {
 	height: 300px;
 	padding-top: 50px;
+	color:black;
+	background-image: url("http://www.afterhood.com/wp-content/uploads/2012/08/Somerville-Farmers-Market-37-11-7-02.jpg");
+	background-size: 475px 300px;
+	opacity: .7;
 }
 
-
-.logInButton {
-	float:right;
-	color:red;
-	font-family: arial;
-	font-size: 15px;
-
-	margin-top: 25px;
-	margin-right: 25px;
-
-}
 
 
 .editmarketlistButton {
 	float:right;
 	color:red;
-	font-family: arial;
+	font-family: helvetica;
 	font-size: 15px;
 
 	margin-top: 25px;
 	margin-right: 25px;
+
 
 }
 
 .editprofileButton {
 	float:right;
 	color:red;
-	font-family: arial;
+	font-family: helvetica;
 	font-size: 15px;
 
 	margin-top: 25px;
@@ -246,78 +316,10 @@ img{
   	}
 
 @media (min-width: 750px) {
-	.headerwrap{
-	height: 80px;
-	border-bottom: 6px solid red;
-}
-	.item{
- 	 width: auto;
-  	 height: 1000px;
-     max-height: 500px;
-}
-.homehead{
-	color: red;
-	font-family: arial;
-	font-size: 44px;
-	position: relative;
-	margin-left: 30px;
-	top:24px;
-	width: 228px;
-	padding: 0 6px;
-	overflow: hidden;
-}
-	.intro{
-	font-family: helvetica;
-	font-size: 100px;
-	color: white; 
-	text-shadow: 4px 0 gray;
-	text-align: left; 
-	line-height: 125px;      
-}
-
-.bottomline{
-	border-top: 5px solid red;
-	background-image: url("http://violetmeyer.com/wp-content/uploads/2014/09/Farmers-market-bounty-tomatoes.jpg");
-	background-size: cover;
-	height: 500px;
-}
-
-
 }
 
 
 @media (min-width: 970px) {
-	.intro{
-	font-family: helvetica;
-	font-size: 140px;
-	color: white; 
-	text-shadow: 4px 0 gray;
-	text-align: left; 
-	line-height: 129px;
-	      
-}
-	.findMarketButton{
-	margin-left: 450px;
-	font-size: 40px;
-  
-  }
-  .signUpButton{
-  	margin-left: 150px;
-  	font-size: 40px;
-
-  }
-
-  .loginBlock{
-  	padding-top: 100px;
-  	padding-right: 400px;
-  	padding-left: 400px;
-  }
-
-  .homehead{
-	top:18px;
-	
-}
-
 }
 
 

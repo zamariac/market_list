@@ -11,15 +11,15 @@ module.exports = React.createClass({
 			<form>	
 				<div className="headerwrap">
 					<a href="#home" className="homeButton"> Home </a> 
-					<div className="marginTop"></div>
-					<div className="homehead"> Market List </div> 
+					<a href="#home" className="homeheadhome"> MARKET LIST </a>
+					<div className="marginTop"></div> 
 				</div>
 
 				<div className="container">
 					<div className="row">
   							<div className="col-sm-6"> 
 								<a href="#foundmarket/hope" className="hope"> 
-									<img className= "img-responsive" src="http://www.scrumptiouschef.com/food/wp-content/uploads/2014/03/hope.jpg"/>
+									<img className= "img-responsive" src="http://www.hungersauce.com/wp-content/uploads/2013/03/Saltillo.jpg"/>
 									<div className="title">Hope Farmers Market</div>
 								</a>
 							</div>

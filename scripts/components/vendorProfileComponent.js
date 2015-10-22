@@ -14,7 +14,7 @@ module.exports = React.createClass({
 					<a href="#editmarketlist" className="editmarketlistButton"> Edit your list </a>
 					<a href="#editprofile" className="editprofileButton"> Edit Profile </a>
 					<div className="marginTop"></div>
-					<div className="homehead"> Market List </div> 
+					<a href="#home" className="homeheadhome"> MARKET LIST </a>  
 				</div>
 				<div className="container">
 					<div className="row">

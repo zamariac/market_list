@@ -10,8 +10,8 @@ module.exports = React.createClass({
 			<div>
 				<a href="#login" className="logInButton"> Log in </a>
 				<div className="headerwraphome"> 
-				<div className="homeheadhome"> Market List </div> 
-				
+				<a href="#home" className="homeheadhome"> MARKET LIST </a> 
+				<div className="topLine"> _____ </div>
 				</div>
 
 				<div id="carousel-example-generic" className="carousel slide" data-ride="carousel">
@@ -22,21 +22,24 @@ module.exports = React.createClass({
 					</ol>
 					 <div className="carousel-inner" role="listbox">
 						<div className="item active">
-							<img src="http://www.toptomatofoods.com/wp-content/uploads/2011/06/IMG_2531.jpg" alt="produce"/>
+							<img src="styles/images/wirebasket.jpeg" alt="produce"/>
 						 	<div className="carousel-caption">
-								<div className="intro"> Find what you're looking for</div>
+								<div className="intro"> FIND WHAT YOU'RE LOOKING FOR </div>
+									<div className= "introTwo"> Plan your meals and reduce waste by finding exactly what you need. </div>
 							</div>
 						</div>
 						<div className="item">
-							<img src="https://torierynning.files.wordpress.com/2014/03/ballard-farmers-market-2.jpg" alt="rootveg"/>
+							<img src="styles/images/cherries.jpeg" alt="rootveg"/>
 							<div className="carousel-caption">
-								<div className="intro"> Enjoy the season's freshest</div>
+								<div className="intro"> ENJOY THE SEASON'S FRESHEST </div>
+									<div className= "introTwo"> Stay on top of what's in season right now and at the market. </div>
 							</div>
 						</div>
 						<div className="item">
-							<img src="https://gardenwarriorsgoodseeds.files.wordpress.com/2015/01/honeybottlesfarmersmarket_ab.jpg" alt="honey"/>
+							<img src="styles/images/grapes.jpeg" alt="honey"/>
 							<div className="carousel-caption">
-								<div className="intro"> Support<br/> local communities </div>
+								<div className="intro"> SUPPORT LOCAL COMMUNITIES </div>
+									<div className= "introTwo"> Make an impact on sustainability &  support your local farms and artisans. </div>
 							</div>
 						</div>
 					</div>
@@ -50,9 +53,37 @@ module.exports = React.createClass({
 		  			</a>
 				</div>
 			</div>
-		<div className="bottomlinehome"> </div>
-		<a href="#findmarket" className="findMarketButton"> Find a market </a>
-		<a href="#signup" className="signUpButton"> Vendor sign up </a>
+		
+		<div className="buttonDiv">
+		<a href="#findmarket" className="findMarketButton"> FIND A MARKET </a>
+		<a href="#signup" className="signUpButton"> VENDOR SIGN UP </a>
+		</div>
+
+		<div className="welcome">
+		<div className="introBlurb"> WELCOME TO MARKET LIST </div>
+		<div className="introBlurbTwo"> We are happy to be here to help make the best of your farmer's market experience. 
+		Whether you're a vendor or a consumer, Market list helps you plan ahead. Vendors can post their weekend's products available so consumers can plan and food waste is reduced. We support your lifestyle, our community
+		and want to make your grocery shopping trip a bit hassle free. </div>
+		</div>
+		 
+
+		<div className="bottomMargin">
+			<div className="about"> ABOUT 
+				<div className="story"> Our Story </div>
+				<div className="press"> Press </div>
+				<div className="terms"> Privacy & Terms</div>
+			</div>
+			<div className="help"> HELP & CONTACT
+				<div className="questions"> FAQ'S </div>
+				<div className="email"> Email Us </div>			
+			</div>
+			<div className="getApp"> GET THE APP 
+				<div className="appInfo"> Iphone & Android <br> </br> Coming Soon! </div>
+			</div>
+		</div>
+
+		<div className="ironyard"> Created by Maria Zamora for Iron Yard Front End Developer program </div>
+
 	</div>
 		);
 	}
