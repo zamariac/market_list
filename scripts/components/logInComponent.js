@@ -20,14 +20,15 @@ module.exports = React.createClass({
 		return (
 			<div className="signupForm" ref="loginPage" onSubmit = {this.login}>
 				<div>
-						<div className="headerwrap"> 
+						<div className="headerwraphome"> 
 							<a href="#home" className="homeButton"> Home </a>
 							<a href="#home" className="homeheadhome"> MARKET LIST </a> 
 
 						</div>
 				</div>
-				<div className="Block">
+				<div className="Block">  
 				<div className="loginBlock">
+					<div className="loginSignin"> SIGN IN </div>
 					{genericError}
 				<form className="form-horizontal" onSubmit={this.onLogin}>
 		  				<div className="form-group">
@@ -54,7 +55,6 @@ module.exports = React.createClass({
 				</form>
 				</div>
 				</div>
-				<div className="bottomline"></div>
 			</div>
 
 		)

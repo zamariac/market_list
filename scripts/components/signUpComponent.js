@@ -15,7 +15,7 @@ module.exports = React.createClass({
 		return(
 			<form onSubmit={this.registerSubmit}>
 
-				<div className="headerwrap"> 
+				<div className="headerwraphome"> 
 					<a href="#home" className="homeButton"> Home </a>
 					<div className="marginTop"></div>
 					<a href="#home" className="homeheadhome"> MARKET LIST </a> 

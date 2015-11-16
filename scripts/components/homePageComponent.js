@@ -11,7 +11,6 @@ module.exports = React.createClass({
 				<a href="#login" className="logInButton"> Log in </a>
 				<div className="headerwraphome"> 
 				<a href="#home" className="homeheadhome"> MARKET LIST </a> 
-				<div className="topLine"> _____ </div>
 				</div>
 
 				<div id="carousel-example-generic" className="carousel slide" data-ride="carousel">
@@ -67,10 +66,9 @@ module.exports = React.createClass({
 		</div>
 		 
 
-		<div className="bottomMargin">
+		
 			<div className="about"> ABOUT 
 				<div className="story"> Our Story </div>
-				<div className="press"> Press </div>
 				<div className="terms"> Privacy & Terms</div>
 			</div>
 			<div className="help"> HELP & CONTACT
@@ -80,7 +78,7 @@ module.exports = React.createClass({
 			<div className="getApp"> GET THE APP 
 				<div className="appInfo"> Iphone & Android <br> </br> Coming Soon! </div>
 			</div>
-		</div>
+		
 
 		<div className="ironyard"> Created by Maria Zamora for Iron Yard Front End Developer program </div>
 

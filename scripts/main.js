@@ -10,10 +10,16 @@ var LogIn= require('./components/logInComponent');
 var FindMarket= require('./components/findMarketComponent');
 var EditProfile= require('./components/editProfileComponent');
 var FoundMarket= require('./components/foundMarketComponent');
+var Editmarketlist= require('./components/marketlistEditComponent');
 
 var userModel = require('./models/userModel');
 var userCollection = require('./collections/userCollection');
 
+var produceModel = require('./models/produceModel');
+var produceCollection = require('./collections/produceCollection');
+
+var user = new produceModel();
+user.save();
 
 var user = new userModel();
 user.me();
@@ -37,7 +43,8 @@ var App = Backbone.Router.extend({
 		'login':'login',
 		'findmarket':'findmarket',
 		'foundmarket/:vendorLocation':'foundmarket',
-		'editprofile':'editprofile'
+		'editprofile':'editprofile',
+		'editmarketlist':'editmarketlist',
 
 	},
 
@@ -80,6 +87,10 @@ var App = Backbone.Router.extend({
 
 	editprofile: function(){
 		React.render(<EditProfile router={app} user={user}/>,document.querySelector('#container'));
+	},
+
+	editmarketlist: function(){
+		React.render(<Editmarketlist router={app} user={user}/>, document.querySelector('#container'));
 	}
 
 
